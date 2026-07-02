@@ -1,3 +1,5 @@
+using System;
+
 public class SistemaJogo
 {
     // Quantidade de vidas do jogador
@@ -13,77 +15,75 @@ public class SistemaJogo
     public int Velocidade { get; set; }
 
     // Quantidade de obstáculos desviados
-
-
     public int ObstaculosDesviados { get; set; }
 
     // Último resultado
     public int UltimaPontuacao { get; set; }
     public int UltimoNivel { get; set; }
     public int UltimosObstaculos { get; set; }
-}
 
-public SistemaJogo()
-{
-    Vidas = 3;
-    Pontos = 0;
-    Nivel = 1;
-    Velocidade = 300;
-    ObstaculosDesviados = 0;
-}
-
-public void PerderVida()
-{
-    if (Vidas > 0)
+    // Construtor
+    public SistemaJogo()
     {
-        Vidas--;
-    }
-}
-
-public void SomarPontos()
-{
-    Pontos += 10;
-    ObstaculosDesviados++;
-}
-
-public void AtualizarNivel()
-{
-    if (Pontos >= 300)
-        Nivel = 4;
-    else if (Pontos >= 200)
-        Nivel = 3;
-    else if (Pontos >= 100)
-        Nivel = 2;
-    else
+        Vidas = 3;
+        Pontos = 0;
         Nivel = 1;
-}
+        Velocidade = 300;
+        ObstaculosDesviados = 0;
+    }
 
-public void AtualizarVelocidade()
-{
-    switch (Nivel)
+    public void PerderVida()
     {
-        case 1:
-            Velocidade = 300;
-            break;
+        if (Vidas > 0)
+        {
+            Vidas--;
+        }
+    }
 
-        case 2:
-            Velocidade = 250;
-            break;
+    public void SomarPontos()
+    {
+        Pontos += 10;
+        ObstaculosDesviados++;
+    }
 
-        case 3:
-            Velocidade = 200;
-            break;
+    public void AtualizarNivel()
+    {
+        if (Pontos >= 300)
+            Nivel = 4;
+        else if (Pontos >= 200)
+            Nivel = 3;
+        else if (Pontos >= 100)
+            Nivel = 2;
+        else
+            Nivel = 1;
+    }
 
-        default:
-            Velocidade = 150;
-            break;
+    public void AtualizarVelocidade()
+    {
+        switch (Nivel)
+        {
+            case 1:
+                Velocidade = 300;
+                break;
+
+            case 2:
+                Velocidade = 250;
+                break;
+
+            case 3:
+                Velocidade = 200;
+                break;
+
+            default:
+                Velocidade = 150;
+                break;
+        }
+    }
+
+    public void SalvarResultado()
+    {
+        UltimaPontuacao = Pontos;
+        UltimoNivel = Nivel;
+        UltimosObstaculos = ObstaculosDesviados;
     }
 }
-
-public void SalvarResultado()
-{
-    UltimaPontuacao = Pontos;
-    UltimoNivel = Nivel;
-    UltimosObstaculos = ObstaculosDesviados;
-}
-
