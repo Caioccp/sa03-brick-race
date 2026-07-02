@@ -57,13 +57,13 @@ public class Carro
         Console.Write(" ▲ ");
 
         Console.SetCursorPosition(coluna, linha + 1);
-        Console.Write("/█\");
+        Console.Write("/█\\");
 
         Console.SetCursorPosition(coluna, linha + 2);
         Console.Write("|█|");
 
         Console.SetCursorPosition(coluna, linha + 3);
-        Console.Write("/_\");
+        Console.Write("/_\\");
 
         Console.SetCursorPosition(coluna + 1, linha + 4);
         Console.Write("║");
