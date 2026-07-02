@@ -38,10 +38,10 @@ public class Foguete
     }
 
     // Desenha o foguete
-    public void DesenharFoguete()
+    public void Desenhar()
     {
         int coluna;
-        int linha = 11;
+        int linha = 12;
 
         // Escolhe a pista
         if (Pista == 0)
