@@ -38,7 +38,7 @@ public class Foguete
     }
 
     // Desenha o foguete
-    public void Desenhar()
+    public void DesenharFoguete()
     {
         int coluna;
         int linha = 11;
