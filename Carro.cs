@@ -46,7 +46,7 @@ public class Foguete
         // Escolhe a pista
         if (Pista == 0)
         {
-            coluna = 6;
+            coluna = 5;
         }
         else
         {
