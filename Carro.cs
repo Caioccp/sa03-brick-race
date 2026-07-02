@@ -8,19 +8,23 @@ public class Foguete
 
     public Foguete()
     {
-        Pista = 0; // começa na esquerda
+        // O foguete começa na pista da esquerda
+        Pista = 0;
     }
 
+    // Move para a pista da esquerda
     public void MoverEsquerda()
     {
         Pista = 0;
     }
 
+    // Move para a pista da direita
     public void MoverDireita()
     {
         Pista = 1;
     }
 
+    // Lê as teclas do jogador
     public void LerTecla(ConsoleKey tecla)
     {
         if (tecla == ConsoleKey.A || tecla == ConsoleKey.LeftArrow)
@@ -33,34 +37,33 @@ public class Foguete
         }
     }
 
+    // Desenha o foguete
     public void Desenhar()
     {
         int coluna;
-        int linha = 14;
+        int linha = 13;
 
-        // 🚀 posições melhor centralizadas
+        // Escolhe a pista
         if (Pista == 0)
         {
-            coluna = 12; // pista esquerda
+            coluna = 8;
         }
         else
         {
-            coluna = 30; // pista direita
+            coluna = 20;
         }
 
         Console.SetCursorPosition(coluna, linha);
-        Console.Write("  ▲  ");
+        Console.Write(" ▲ ");
 
         Console.SetCursorPosition(coluna, linha + 1);
-        Console.Write(" /█\\ ");
+        Console.Write("/█\\");
 
         Console.SetCursorPosition(coluna, linha + 2);
-        Console.Write(" |█| ");
+        Console.Write("/_\\");
 
         Console.SetCursorPosition(coluna, linha + 3);
-        Console.Write("/___\\");
+        Console.Write(" | ");
 
-        Console.SetCursorPosition(coluna, linha + 4);
-        Console.Write("  ║  ");
     }
 }
