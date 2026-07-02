@@ -37,7 +37,21 @@ public class SistemaJogo
         if (Vidas > 0)
         {
             Vidas--;
+
+Console.Beep(300, 150);
+Console.Beep(200, 250);
+
+if (Vidas == 0)
+{
+    Console.Beep(700, 200);
+    Console.Beep(600, 200);
+    Console.Beep(500, 200);
+    Console.Beep(400, 300);
+    Console.Beep(300, 500);
+}
+}
         }
+        
     }
 
     public void SomarPontos()
@@ -56,6 +70,13 @@ public class SistemaJogo
             Nivel = 2;
         else
             Nivel = 1;
+
+            if (Nivel > nivelAnterior)
+{
+    Console.Beep(700, 100);
+    Console.Beep(900, 100);
+    Console.Beep(1100, 200);
+}
     }
 
     public void AtualizarVelocidade()
