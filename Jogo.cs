@@ -25,6 +25,10 @@ public class Jogo
     // Velocidade de atualização da tela (em milissegundos).
     int velocidade = 250;
 
+    // Objeto responsável por controlar o foguete do jogador.
+    Foguete foguete = new Foguete();
+
+
     // ============================
     // MÉTODO QUE INICIA O JOGO
     // ============================
@@ -53,65 +57,120 @@ public class Jogo
     // DESENHA A TELA
     // ============================
 
-    void DesenharTela()
-    {
-        // Limpa o console para redesenhar tudo.
-        Console.Clear();
+    // ============================
+    // DESENHA A TELA
+    // ============================
 
-        // Título do jogo.
-        Console.WriteLine("==============================================");
-        Console.WriteLine("              BRICK RACE");
-        Console.WriteLine("==============================================");
+void DesenharTela()
+{
+    // Limpa o console para desenhar uma nova tela.
+    Console.Clear();
 
-        Console.WriteLine();
+    // ============================
+    // CABEÇALHO DO JOGO
+    // ============================
 
-        // Mensagem temporária.
-        // Depois será substituída pela pista.
-        Console.WriteLine("A pista será desenhada aqui.");
+    // Exibe o título do jogo.
+    Console.WriteLine("==============================================");
+    Console.WriteLine("              BRICK RACE");
+    Console.WriteLine("==============================================");
 
-        Console.WriteLine();
+    Console.WriteLine();
 
-        // Painel de informações.
-        Console.WriteLine("VIDAS : " + vidas);
-        Console.WriteLine("PONTOS: " + pontos);
-        Console.WriteLine("NÍVEL : " + nivel);
-        Console.WriteLine("VELOC.: " + velocidade + " ms");
+    // ============================
+    // DESENHO DA PISTA
+    // ============================
 
-        Console.WriteLine();
+    // ============================
+    // DESENHO DA PISTA
+    // ============================
 
-        // Controles.
-        Console.WriteLine("CONTROLES");
-        Console.WriteLine("A ou ← = Esquerda");
-        Console.WriteLine("D ou → = Direita");
-        Console.WriteLine("ESC = Sair");
-    }
+    // Desenha a borda superior da pista.
+    Console.WriteLine("+-------------------------+");
+
+    // Repete 12 vezes para formar a altura da pista.
+        for (int i = 0; i < 12; i++)
+{
+    // Cada linha representa uma parte da pista.
+    // A linha vertical do meio separa as duas faixas.
+    Console.WriteLine("|           |             |");
+}
+
+    // Desenha a borda inferior da pista.
+    Console.WriteLine("+-------------------------+");
+
+    Console.WriteLine();
+
+    // ============================
+    // PAINEL DE INFORMAÇÕES
+    // ============================
+
+    // Exibe a quantidade de vidas.
+    Console.WriteLine("VIDAS : " + vidas);
+
+    // Exibe a pontuação atual.
+    Console.WriteLine("PONTOS: " + pontos);
+
+    // Exibe o nível atual.
+    Console.WriteLine("NÍVEL : " + nivel);
+
+    // Exibe a velocidade do jogo.
+    Console.WriteLine("VELOC.: " + velocidade + " ms");
+
+    Console.WriteLine();
+
+    // ============================
+// CONTROLES
+// ============================
+
+// Mostra os comandos do jogo.
+Console.WriteLine("CONTROLES");
+Console.WriteLine("A ou ← = Esquerda");
+Console.WriteLine("D ou → = Direita");
+Console.WriteLine("ESC = Sair");
+
+
+// ============================
+// DESENHA O FOGUETE
+// ============================
+
+// Desenha o foguete na posição atual.
+// Esse comando deve ficar por último para que o foguete
+// apareça sobre a pista.
+foguete.Desenhar();
+
+}
 
     // ============================
     // LÊ O TECLADO
     // ============================
 
     void LerTeclado()
+{
+    // Se nenhuma tecla foi pressionada,
+    // o método termina.
+    if (!Console.KeyAvailable)
     {
-        // Se nenhuma tecla foi pressionada,
-        // o método termina.
-        if (!Console.KeyAvailable)
-        {
-            return;
-        }
-
-        // Lê a tecla pressionada.
-        ConsoleKey tecla = Console.ReadKey(true).Key;
-
-        // Se pressionar ESC,
-        // volta para o menu principal.
-        if (tecla == ConsoleKey.Escape)
-        {
-            rodando = false;
-        }
-
-        // Os comandos A, D e setas serão adicionados
-        // quando criarmos o carro.
+        return;
     }
+
+    // Lê a tecla pressionada.
+    ConsoleKey tecla = Console.ReadKey(true).Key;
+
+    // Envia a tecla pressionada para o foguete.
+    // O próprio foguete decide se deve mudar de pista.
+    foguete.LerTecla(tecla);
+
+    // Se pressionar ESC,
+    // volta para o menu principal.
+    if (tecla == ConsoleKey.Escape)
+    {
+        rodando = false;
+    }
+
+    // Os comandos A, D e as setas já estão sendo enviados
+    // para o foguete. Depois vamos apenas desenhá-lo na tela.
+}
 
     // ============================
     // ATUALIZA O JOGO
