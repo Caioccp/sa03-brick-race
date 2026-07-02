@@ -1,12 +1,12 @@
 using System;
 
-public class Carro
+public class Foguete
 {
     // 0 = pista esquerda
     // 1 = pista direita
     public int Pista { get; private set; }
 
-    public Carro()
+    public Foguete()
     {
         // O foguete começa na pista da esquerda
         Pista = 0;
