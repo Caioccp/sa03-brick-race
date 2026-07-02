@@ -1,30 +1,55 @@
 using System;
 
+// ============================
+// CLASSE FOGUETE (JOGADOR)
+// ============================
+// Responsável por:
+// - Controlar posição do foguete
+// - Receber comandos do teclado
+// - Desenhar o foguete na tela
+
 public class Foguete
 {
+    // ============================
+    // POSIÇÃO DO FOGUETE
+    // ============================
+
     // 0 = pista esquerda
     // 1 = pista direita
     public int Pista { get; private set; }
 
+    // ============================
+    // CONSTRUTOR
+    // ============================
+
+    // Define posição inicial do foguete
     public Foguete()
     {
-        // O foguete começa na pista da esquerda
+        // Começa sempre na pista esquerda
         Pista = 0;
     }
 
-    // Move para a pista da esquerda
+    // ============================
+    // MOVIMENTO DO FOGUETE
+    // ============================
+
+    // Move o foguete para a pista da esquerda
     public void MoverEsquerda()
     {
         Pista = 0;
     }
 
-    // Move para a pista da direita
+    // Move o foguete para a pista da direita
     public void MoverDireita()
     {
         Pista = 1;
     }
 
-    // Lê as teclas do jogador
+    // ============================
+    // CONTROLE DE TECLADO
+    // ============================
+
+    // Lê tecla pressionada e decide movimento
     public void LerTecla(ConsoleKey tecla)
     {
         if (tecla == ConsoleKey.A || tecla == ConsoleKey.LeftArrow)
@@ -37,13 +62,17 @@ public class Foguete
         }
     }
 
-    // Desenha o foguete
+    // ============================
+    // DESENHO DO FOGUETE
+    // ============================
+
+    // Desenha o foguete na tela na posição atual
     public void Desenhar()
     {
         int coluna;
         int linha = 13;
 
-        // Escolhe a pista
+        // Define coluna baseada na pista
         if (Pista == 0)
         {
             coluna = 5;
@@ -52,6 +81,10 @@ public class Foguete
         {
             coluna = 20;
         }
+
+        // ============================
+        // FORMATO DO FOGUETE
+        // ============================
 
         Console.SetCursorPosition(coluna, linha);
         Console.Write(" ▲ ");
@@ -64,6 +97,5 @@ public class Foguete
 
         Console.SetCursorPosition(coluna, linha + 3);
         Console.Write(" | ");
-
     }
 }
