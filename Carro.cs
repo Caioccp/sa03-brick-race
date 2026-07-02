@@ -41,12 +41,12 @@ public class Foguete
     public void Desenhar()
     {
         int coluna;
-        int linha = 12;
+        int linha = 13;
 
         // Escolhe a pista
         if (Pista == 0)
         {
-            coluna = 8;
+            coluna = 5;
         }
         else
         {
@@ -60,12 +60,10 @@ public class Foguete
         Console.Write("/█\\");
 
         Console.SetCursorPosition(coluna, linha + 2);
-        Console.Write("|█|");
-
-        Console.SetCursorPosition(coluna, linha + 3);
         Console.Write("/_\\");
 
-        Console.SetCursorPosition(coluna + 1, linha + 4);
-        Console.Write("║");
+        Console.SetCursorPosition(coluna, linha + 3);
+        Console.Write(" | ");
+
     }
 }
