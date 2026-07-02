@@ -41,7 +41,7 @@ public class Foguete
     public void DesenharFoguete()
     {
         int coluna;
-        int linha = 11;
+        int linha = 12;
 
         // Escolhe a pista
         if (Pista == 0)
