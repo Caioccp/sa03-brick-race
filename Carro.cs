@@ -50,7 +50,7 @@ public class Foguete
         }
         else
         {
-            coluna = 20;
+            coluna = 18;
         }
 
         Console.SetCursorPosition(coluna, linha);
