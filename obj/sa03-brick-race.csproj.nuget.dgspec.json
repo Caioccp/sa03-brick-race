@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\caio_pouzada\\Documents\\sa03-brick-race\\sa03-brick-race.csproj": {}
+    "C:\\Users\\luiza_knop\\Documents\\sa03-brick-race-1\\sa03-brick-race.csproj": {}
   },
   "projects": {
-    "C:\\Users\\caio_pouzada\\Documents\\sa03-brick-race\\sa03-brick-race.csproj": {
+    "C:\\Users\\luiza_knop\\Documents\\sa03-brick-race-1\\sa03-brick-race.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\caio_pouzada\\Documents\\sa03-brick-race\\sa03-brick-race.csproj",
+        "projectUniqueName": "C:\\Users\\luiza_knop\\Documents\\sa03-brick-race-1\\sa03-brick-race.csproj",
         "projectName": "sa03-brick-race",
-        "projectPath": "C:\\Users\\caio_pouzada\\Documents\\sa03-brick-race\\sa03-brick-race.csproj",
-        "packagesPath": "C:\\Users\\caio_pouzada\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\caio_pouzada\\Documents\\sa03-brick-race\\obj\\",
+        "projectPath": "C:\\Users\\luiza_knop\\Documents\\sa03-brick-race-1\\sa03-brick-race.csproj",
+        "packagesPath": "C:\\Users\\luiza_knop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luiza_knop\\Documents\\sa03-brick-race-1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\caio_pouzada\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\luiza_knop\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
