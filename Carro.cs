@@ -63,7 +63,7 @@ public class Foguete
         Console.Write("/_\\");
 
         Console.SetCursorPosition(coluna, linha + 3);
-        Console.Write(" | ");
+        Console.Write("^v^");
 
     }
 }
