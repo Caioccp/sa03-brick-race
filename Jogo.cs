@@ -99,13 +99,10 @@ public class Jogo
         obstaculoLinha = 1;
         obstaculoPista = rnd.Next(0, 2);
 
-        // 🔥 ganha pontos ao desviar
         sistema.SomarPontos();
     }
 
     VerificarColisao();
-
-    // 🔥 atualiza nível e velocidade automaticamente
     sistema.AtualizarNivel();
     sistema.AtualizarVelocidade();
 }
@@ -120,7 +117,6 @@ void VerificarColisao()
         obstaculoLinha = 1;
         obstaculoPista = rnd.Next(0, 2);
 
-        // 🔥 GAME OVER
         if (sistema.Vidas <= 0)
         {
             sistema.SalvarResultado();
