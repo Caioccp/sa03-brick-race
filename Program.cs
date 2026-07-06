@@ -1,5 +1,4 @@
-﻿// Ponto de entrada do programa
-// Aqui o jogo começa
+﻿Console.Beep(1000, 500);
 
-Menu menu = new Menu(); // cria o menu
-menu.Exibir();          // chama o menu principal
+Menu menu = new Menu();
+menu.Exibir();

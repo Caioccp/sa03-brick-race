@@ -81,11 +81,9 @@ public class SistemaJogo
         Console.Beep(900, 100);
         Console.Beep(1100, 200);
     }
-    
+
     nivelAnterior = Nivel;
 }
-
-  
 
     public void AtualizarVelocidade()
 {
