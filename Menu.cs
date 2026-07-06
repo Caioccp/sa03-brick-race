@@ -1,6 +1,3 @@
-using System;
-// Importa a biblioteca padrão do C#
-// Ela permite usar Console, leitura de teclado, escrita na tela, etc.
 using System; 
 
 public class Menu

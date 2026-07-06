@@ -9,12 +9,7 @@ public class Jogo
 
     Foguete foguete = new Foguete();
 
-    int obstaculoLinha = 5;
-    int obstaculoPista = 0;
-
-    int pistaTop = 4;
-
-    Random rnd = new Random();
+    Obstaculo obstaculo = new Obstaculo(30);
 
     public void Iniciar()
     {
@@ -61,21 +56,7 @@ public class Jogo
         Console.WriteLine("ESC = Sair");
 
         foguete.Desenhar();
-        Obstaculo obstaculo = new Obstaculo(30);
         obstaculo.Desenhar();
-    }
-
-    void DesenharObstaculo()
-    {
-        int coluna;
-
-        if (obstaculoPista == 0)
-            coluna = 5;
-        else
-            coluna = 20;
-
-        Console.SetCursorPosition(coluna, pistaTop + obstaculoLinha);
-        Console.Write("█");
     }
 
     void LerTeclado()
@@ -92,36 +73,28 @@ public class Jogo
     }
 
     void Atualizar()
-    {
-        obstaculoLinha++;
+{
+    obstaculo.CriarObstaculo();
+    obstaculo.Atualizar();
 
-        if (obstaculoLinha > 12)
-        {
-            obstaculoLinha = 1;
-            obstaculoPista = rnd.Next(0, 2);
+    VerificarColisao();
 
-            // 🔥 ganha pontos ao desviar
-            sistema.SomarPontos();
-        }
-
-        VerificarColisao();
-
-        // 🔥 atualiza nível e velocidade automaticamente
-        sistema.AtualizarNivel();
-        sistema.AtualizarVelocidade();
-    }
+    sistema.AtualizarNivel();
+    sistema.AtualizarVelocidade();
+}
 
     void VerificarColisao()
+{
+    for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
     {
-        if (obstaculoPista == foguete.Pista &&
-            obstaculoLinha >= 9 && obstaculoLinha <= 12)
+        var o = obstaculo.Obstaculos[i];
+
+        if (o.Pista == foguete.Pista && o.Linha >= 13 && o.Linha <= 16)
         {
             sistema.PerderVida();
 
-            obstaculoLinha = 1;
-            obstaculoPista = rnd.Next(0, 2);
+            obstaculo.Obstaculos.RemoveAt(i);
 
-            // 🔥 GAME OVER
             if (sistema.Vidas <= 0)
             {
                 sistema.SalvarResultado();
@@ -129,7 +102,13 @@ public class Jogo
                 rodando = false;
             }
         }
+        else if (o.Linha > 16)
+        {
+            sistema.SomarPontos();
+            obstaculo.Obstaculos.RemoveAt(i);
+        }
     }
+}
 
     void GameOver()
     {
