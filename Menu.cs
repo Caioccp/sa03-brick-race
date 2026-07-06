@@ -31,22 +31,22 @@ public class Menu
             Console.WriteLine("╔════════════════════════════════════╗");
             // Imprime a borda superior do menu
 
-            Console.WriteLine("║           BRICK RACE              ║");
+            Console.WriteLine("║            BRICK RACE              ║");
             // Título do jogo dentro do menu
 
             Console.WriteLine("╠════════════════════════════════════╣");
             // Linha de separação visual
 
-            Console.WriteLine("║ 1 - Iniciar jogo                  ║");
+            Console.WriteLine("║ 1 - Iniciar jogo                   ║");
             // Opção 1: iniciar o jogo
 
-            Console.WriteLine("║ 2 - Instruções                    ║");
+            Console.WriteLine("║ 2 - Instruções                     ║");
             // Opção 2: mostrar regras e controles
 
-            Console.WriteLine("║ 3 - Último resultado             ║");
+            Console.WriteLine("║ 3 - Último resultado               ║");
             // Opção 3: mostrar último resultado jogado
 
-            Console.WriteLine("║ 0 - Sair                          ║");
+            Console.WriteLine("║ 0 - Sair                           ║");
             // Opção 0: encerrar o programa
 
             Console.WriteLine("╚════════════════════════════════════╝");
