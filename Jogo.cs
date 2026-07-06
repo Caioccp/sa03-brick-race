@@ -95,6 +95,7 @@ public class Jogo
     {
         obstaculoLinha++;
 
+<<<<<<< HEAD
         if (obstaculoLinha > 12)
         {
             obstaculoLinha = 1;
@@ -115,6 +116,27 @@ public class Jogo
     {
         if (obstaculoPista == foguete.Pista &&
             obstaculoLinha >= 9 && obstaculoLinha <= 12)
+=======
+        sistema.SomarPontos();
+    }
+
+    VerificarColisao();
+    sistema.AtualizarNivel();
+    sistema.AtualizarVelocidade();
+}
+
+void VerificarColisao()
+{
+    if (obstaculoPista == foguete.Pista &&
+        obstaculoLinha >= 9 && obstaculoLinha <= 12)
+    {
+        sistema.PerderVida();
+
+        obstaculoLinha = 1;
+        obstaculoPista = rnd.Next(0, 2);
+
+        if (sistema.Vidas <= 0)
+>>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
         {
             sistema.PerderVida();
 
