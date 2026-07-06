@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 using System;
 // Importa a biblioteca padrão do C#
 // Ela permite usar Console, leitura de teclado, escrita na tela, etc.
-=======
 using System; 
->>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
 
 public class Menu
 {
@@ -57,40 +54,28 @@ public class Menu
                     jogo.Iniciar();
 
                     break;
-<<<<<<< HEAD
                 // Finaliza este caso do switch
-=======
->>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
 
                 case 2:
 
                     MostrarInstrucoes();
 
                     break;
-<<<<<<< HEAD
                 // Encerra este caso
-=======
->>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
 
                 case 3:
 
                     MostrarResultado();
 
                     break;
-<<<<<<< HEAD
                 // Encerra este caso
-=======
->>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
 
                 case 0:
 
                     Console.WriteLine("Saindo...");
 
                     break;
-<<<<<<< HEAD
                 // Encerra este caso
-=======
->>>>>>> d1ee9edebdc4a71965705698f92d367865bd413b
 
                 default:
 
