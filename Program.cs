@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-﻿Console.Beep(1000, 500);
-
-Menu menu = new Menu();
-menu.Exibir();
-=======
-﻿
 using System;
 using System.Text;
 
@@ -22,4 +15,3 @@ class Program
         menu.Exibir();
     }
 }
->>>>>>> 2a6c11eb00e6c185bd666c986ccc9f89e1eb45c7
