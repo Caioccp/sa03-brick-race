@@ -25,21 +25,26 @@ public class SistemaJogo
     }
 
     public void PerderVida()
+{
+    if (Vidas > 0)
     {
-        if (Vidas > 0)
-        {
-            Vidas--;
+        Vidas--;
 
-            if (Vidas == 0)
-            {
-                Console.Beep(700, 200);
-                Console.Beep(600, 200);
-                Console.Beep(500, 200);
-                Console.Beep(400, 300);
-                Console.Beep(300, 500);
-            }
+        // Som de dano
+        Console.Beep(300, 100);
+        Console.Beep(200, 200);
+
+        // Som de Game Over
+        if (Vidas == 0)
+        {
+            Console.Beep(700, 150);
+            Console.Beep(600, 150);
+            Console.Beep(500, 150);
+            Console.Beep(400, 200);
+            Console.Beep(300, 400);
         }
     }
+}
 
     public void SomarPontos()
     {
@@ -49,8 +54,6 @@ public class SistemaJogo
 
     public void AtualizarNivel()
 {
-    int nivelAnterior = Nivel;
-
     if (Pontos >= 900)
         Nivel = 10;
     else if (Pontos >= 800)
@@ -78,6 +81,8 @@ public class SistemaJogo
         Console.Beep(900, 100);
         Console.Beep(1100, 200);
     }
+    
+    nivelAnterior = Nivel;
 }
 
   
