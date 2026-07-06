@@ -135,11 +135,11 @@ void GameOver()
     Console.Clear();
 
     Console.WriteLine("╔════════════════════════════════════════════╗");
-    Console.WriteLine("║               FIM DE JOGO                ║");
+    Console.WriteLine("║               FIM DE JOGO                  ║");
     Console.WriteLine("╠════════════════════════════════════════════╣");
-    Console.WriteLine("║ Pontuacao final : " + sistema.Pontos.ToString("D6") + " ║");
-    Console.WriteLine("║ Nivel alcancado  : " + sistema.Nivel.ToString("D2") + " ║");
-    Console.WriteLine("║ Obstaculos desviados : " + sistema.ObstaculosDesviados + "           ║");
+    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D2")}                        ║");
+    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados}                     ║");
     Console.WriteLine("║                                            ║");
     Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
     Console.WriteLine("║ ao menu principal.                         ║");
