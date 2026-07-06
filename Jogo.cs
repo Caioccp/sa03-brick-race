@@ -61,7 +61,8 @@ public class Jogo
         Console.WriteLine("ESC = Sair");
 
         foguete.Desenhar();
-        DesenharObstaculo();
+        Obstaculo obstaculo = new Obstaculo(30);
+        obstaculo.Desenhar();
     }
 
     void DesenharObstaculo()
@@ -91,60 +92,60 @@ public class Jogo
     }
 
     void Atualizar()
-{
-    obstaculoLinha++;
-
-    if (obstaculoLinha > 12)
     {
-        obstaculoLinha = 1;
-        obstaculoPista = rnd.Next(0, 2);
+        obstaculoLinha++;
 
-        // 🔥 ganha pontos ao desviar
-        sistema.SomarPontos();
+        if (obstaculoLinha > 12)
+        {
+            obstaculoLinha = 1;
+            obstaculoPista = rnd.Next(0, 2);
+
+            // 🔥 ganha pontos ao desviar
+            sistema.SomarPontos();
+        }
+
+        VerificarColisao();
+
+        // 🔥 atualiza nível e velocidade automaticamente
+        sistema.AtualizarNivel();
+        sistema.AtualizarVelocidade();
     }
 
-    VerificarColisao();
-
-    // 🔥 atualiza nível e velocidade automaticamente
-    sistema.AtualizarNivel();
-    sistema.AtualizarVelocidade();
-}
-
-void VerificarColisao()
-{
-    if (obstaculoPista == foguete.Pista &&
-        obstaculoLinha >= 9 && obstaculoLinha <= 12)
+    void VerificarColisao()
     {
-        sistema.PerderVida();
-
-        obstaculoLinha = 1;
-        obstaculoPista = rnd.Next(0, 2);
-
-        // 🔥 GAME OVER
-        if (sistema.Vidas <= 0)
+        if (obstaculoPista == foguete.Pista &&
+            obstaculoLinha >= 9 && obstaculoLinha <= 12)
         {
-            sistema.SalvarResultado();
-            GameOver();
-            rodando = false;
+            sistema.PerderVida();
+
+            obstaculoLinha = 1;
+            obstaculoPista = rnd.Next(0, 2);
+
+            // 🔥 GAME OVER
+            if (sistema.Vidas <= 0)
+            {
+                sistema.SalvarResultado();
+                GameOver();
+                rodando = false;
+            }
         }
     }
-}
 
-void GameOver()
-{
-    Console.Clear();
+    void GameOver()
+    {
+        Console.Clear();
 
-    Console.WriteLine("╔════════════════════════════════════════════╗");
-    Console.WriteLine("║               FIM DE JOGO                  ║");
-    Console.WriteLine("╠════════════════════════════════════════════╣");
-    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
-    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D2")}                        ║");
-    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados}                     ║");
-    Console.WriteLine("║                                            ║");
-    Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
-    Console.WriteLine("║ ao menu principal.                         ║");
-    Console.WriteLine("╚════════════════════════════════════════════╝");
+        Console.WriteLine("╔════════════════════════════════════════════╗");
+        Console.WriteLine("║               FIM DE JOGO                  ║");
+        Console.WriteLine("╠════════════════════════════════════════════╣");
+        Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+        Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D2")}                        ║");
+        Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados}                    ║");
+        Console.WriteLine("║                                            ║");
+        Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
+        Console.WriteLine("║ ao menu principal.                         ║");
+        Console.WriteLine("╚════════════════════════════════════════════╝");
 
-    Console.ReadKey();
-}
+        Console.ReadKey();
+    }
 }

@@ -1,4 +1,4 @@
-using System; 
+using System;
 // Importa a biblioteca padrão do C#
 // Ela permite usar Console, leitura de teclado, escrita na tela, etc.
 
@@ -52,6 +52,7 @@ public class Menu
             Console.WriteLine("╚════════════════════════════════════╝");
             // Borda inferior do menu
 
+
             Console.Write("Escolha: ");
             // Solicita entrada do usuário
 
@@ -92,7 +93,7 @@ public class Menu
                     // Chama o método que inicia o loop do jogo
 
                     break;
-                    // Finaliza este caso do switch
+                // Finaliza este caso do switch
 
                 case 2:
                     // Caso usuário escolha ver instruções
@@ -101,7 +102,7 @@ public class Menu
                     // Chama método que exibe regras do jogo
 
                     break;
-                    // Encerra este caso
+                // Encerra este caso
 
                 case 3:
                     // Caso usuário escolha ver último resultado
@@ -110,7 +111,7 @@ public class Menu
                     // Chama método que exibe resultado (ainda simples)
 
                     break;
-                    // Encerra este caso
+                // Encerra este caso
 
                 case 0:
                     // Caso usuário escolha sair
@@ -119,7 +120,7 @@ public class Menu
                     // Mostra mensagem de encerramento
 
                     break;
-                    // Encerra este caso
+                // Encerra este caso
 
                 default:
                     // Caso usuário digite número que não existe no menu
