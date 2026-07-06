@@ -1,190 +1,150 @@
 using System;
-// Permite utilizar funções do Console.
-
 using System.Threading;
-// Permite utilizar o Thread.Sleep() para controlar a velocidade do jogo.
 
 public class Jogo
 {
-    // ============================
-    // VARIÁVEIS DO JOGO
-    // ============================
-
-    // Indica se o jogo continua rodando.
     bool rodando = true;
 
-    // Quantidade de vidas do jogador.
-    int vidas = 3;
+    SistemaJogo sistema = new SistemaJogo();
 
-    // Pontuação da partida.
-    int pontos = 0;
-
-    // Nível atual.
-    int nivel = 1;
-
-    // Velocidade de atualização da tela (em milissegundos).
-    int velocidade = 250;
-
-    // Objeto responsável por controlar o foguete do jogador.
     Foguete foguete = new Foguete();
 
+    int obstaculoLinha = 5;
+    int obstaculoPista = 0;
 
-    // ============================
-    // MÉTODO QUE INICIA O JOGO
-    // ============================
+    int pistaTop = 4;
+
+    Random rnd = new Random();
 
     public void Iniciar()
     {
-        // Enquanto a variável "rodando" for verdadeira,
-        // o jogo continuará funcionando.
         while (rodando)
         {
-            // Desenha toda a tela.
             DesenharTela();
-
-            // Verifica se o jogador pressionou alguma tecla.
             LerTeclado();
-
-            // Atualiza informações do jogo.
             Atualizar();
-
-            // Aguarda alguns milissegundos antes de atualizar novamente.
-            Thread.Sleep(velocidade);
+            Thread.Sleep(sistema.Velocidade);
         }
     }
 
-    // ============================
-    // DESENHA A TELA
-    // ============================
+    void DesenharTela()
+    {
+        Console.Clear();
 
-    // ============================
-    // DESENHA A TELA
-    // ============================
+        Console.WriteLine("==============================================");
+        Console.WriteLine("              BRICK RACE");
+        Console.WriteLine("==============================================");
 
-void DesenharTela()
-{
-    // Limpa o console para desenhar uma nova tela.
-    Console.Clear();
+        Console.WriteLine();
 
-    // ============================
-    // CABEÇALHO DO JOGO
-    // ============================
+        Console.WriteLine("+-------------------------+");
 
-    // Exibe o título do jogo.
-    Console.WriteLine("==============================================");
-    Console.WriteLine("              BRICK RACE");
-    Console.WriteLine("==============================================");
-
-    Console.WriteLine();
-
-    // ============================
-    // DESENHO DA PISTA
-    // ============================
-
-    // ============================
-    // DESENHO DA PISTA
-    // ============================
-
-    // Desenha a borda superior da pista.
-    Console.WriteLine("+-------------------------+");
-
-    // Repete 12 vezes para formar a altura da pista.
         for (int i = 0; i < 12; i++)
-{
-    // Cada linha representa uma parte da pista.
-    // A linha vertical do meio separa as duas faixas.
-    Console.WriteLine("|           |             |");
-}
+        {
+            Console.WriteLine("|           |             |");
+        }
 
-    // Desenha a borda inferior da pista.
-    Console.WriteLine("+-------------------------+");
+        Console.WriteLine("+-------------------------+");
 
-    Console.WriteLine();
+        Console.WriteLine();
 
-    // ============================
-    // PAINEL DE INFORMAÇÕES
-    // ============================
+        Console.WriteLine("VIDAS : " + sistema.Vidas);
+        Console.WriteLine("PONTOS: " + sistema.Pontos);
+        Console.WriteLine("NÍVEL : " + sistema.Nivel);
+        Console.WriteLine("VELOC.: " + sistema.Velocidade + " ms");
 
-    // Exibe a quantidade de vidas.
-    Console.WriteLine("VIDAS : " + vidas);
+        Console.WriteLine();
 
-    // Exibe a pontuação atual.
-    Console.WriteLine("PONTOS: " + pontos);
+        Console.WriteLine("CONTROLES");
+        Console.WriteLine("A ou ← = Esquerda");
+        Console.WriteLine("D ou → = Direita");
+        Console.WriteLine("ESC = Sair");
 
-    // Exibe o nível atual.
-    Console.WriteLine("NÍVEL : " + nivel);
+        foguete.Desenhar();
+        DesenharObstaculo();
+    }
 
-    // Exibe a velocidade do jogo.
-    Console.WriteLine("VELOC.: " + velocidade + " ms");
+    void DesenharObstaculo()
+    {
+        int coluna;
 
-    Console.WriteLine();
+        if (obstaculoPista == 0)
+            coluna = 5;
+        else
+            coluna = 20;
 
-    // ============================
-// CONTROLES
-// ============================
-
-// Mostra os comandos do jogo.
-Console.WriteLine("CONTROLES");
-Console.WriteLine("A ou ← = Esquerda");
-Console.WriteLine("D ou → = Direita");
-Console.WriteLine("ESC = Sair");
-
-
-// ============================
-// DESENHA O FOGUETE
-// ============================
-
-// Desenha o foguete na posição atual.
-// Esse comando deve ficar por último para que o foguete
-// apareça sobre a pista.
-foguete.Desenhar();
-
-}
-
-    // ============================
-    // LÊ O TECLADO
-    // ============================
+        Console.SetCursorPosition(coluna, pistaTop + obstaculoLinha);
+        Console.Write("█");
+    }
 
     void LerTeclado()
-{
-    // Se nenhuma tecla foi pressionada,
-    // o método termina.
-    if (!Console.KeyAvailable)
     {
-        return;
+        if (!Console.KeyAvailable)
+            return;
+
+        ConsoleKey tecla = Console.ReadKey(true).Key;
+
+        foguete.LerTecla(tecla);
+
+        if (tecla == ConsoleKey.Escape)
+            rodando = false;
     }
-
-    // Lê a tecla pressionada.
-    ConsoleKey tecla = Console.ReadKey(true).Key;
-
-    // Envia a tecla pressionada para o foguete.
-    // O próprio foguete decide se deve mudar de pista.
-    foguete.LerTecla(tecla);
-
-    // Se pressionar ESC,
-    // volta para o menu principal.
-    if (tecla == ConsoleKey.Escape)
-    {
-        rodando = false;
-    }
-
-    // Os comandos A, D e as setas já estão sendo enviados
-    // para o foguete. Depois vamos apenas desenhá-lo na tela.
-}
-
-    // ============================
-    // ATUALIZA O JOGO
-    // ============================
 
     void Atualizar()
-    {
-        // Neste momento ainda não existe lógica.
+{
+    obstaculoLinha++;
 
-        // Aqui futuramente teremos:
-        // • Movimento dos obstáculos.
-        // • Colisão.
-        // • Pontuação.
-        // • Nível.
-        // • Velocidade.
+    if (obstaculoLinha > 12)
+    {
+        obstaculoLinha = 1;
+        obstaculoPista = rnd.Next(0, 2);
+
+        // 🔥 ganha pontos ao desviar
+        sistema.SomarPontos();
     }
+
+    VerificarColisao();
+
+    // 🔥 atualiza nível e velocidade automaticamente
+    sistema.AtualizarNivel();
+    sistema.AtualizarVelocidade();
+}
+
+void VerificarColisao()
+{
+    if (obstaculoPista == foguete.Pista &&
+        obstaculoLinha >= 9 && obstaculoLinha <= 12)
+    {
+        sistema.PerderVida();
+
+        obstaculoLinha = 1;
+        obstaculoPista = rnd.Next(0, 2);
+
+        // 🔥 GAME OVER
+        if (sistema.Vidas <= 0)
+        {
+            sistema.SalvarResultado();
+            GameOver();
+            rodando = false;
+        }
+    }
+}
+
+void GameOver()
+{
+    Console.Clear();
+
+    Console.WriteLine("╔════════════════════════════════════════════╗");
+    Console.WriteLine("║               FIM DE JOGO                  ║");
+    Console.WriteLine("╠════════════════════════════════════════════╣");
+    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D2")}                        ║");
+    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados}                     ║");
+    Console.WriteLine("║                                            ║");
+    Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
+    Console.WriteLine("║ ao menu principal.                         ║");
+    Console.WriteLine("╚════════════════════════════════════════════╝");
+
+    Console.ReadKey();
+}
 }

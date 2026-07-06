@@ -2,27 +2,18 @@ using System;
 
 public class SistemaJogo
 {
-    // Quantidade de vidas do jogador
     public int Vidas { get; set; }
-
-    // Pontuação atual
     public int Pontos { get; set; }
-
-    // Nível atual
     public int Nivel { get; set; }
-
-    // Velocidade do jogo (Thread.Sleep)
     public int Velocidade { get; set; }
-
-    // Quantidade de obstáculos desviados
     public int ObstaculosDesviados { get; set; }
 
-    // Último resultado
     public int UltimaPontuacao { get; set; }
     public int UltimoNivel { get; set; }
     public int UltimosObstaculos { get; set; }
 
-    // Construtor
+    private int nivelAnterior;
+
     public SistemaJogo()
     {
         Vidas = 3;
@@ -30,6 +21,7 @@ public class SistemaJogo
         Nivel = 1;
         Velocidade = 300;
         ObstaculosDesviados = 0;
+        nivelAnterior = 1;
     }
 
     public void PerderVida()
@@ -38,20 +30,15 @@ public class SistemaJogo
         {
             Vidas--;
 
-Console.Beep(300, 150);
-Console.Beep(200, 250);
-
-if (Vidas == 0)
-{
-    Console.Beep(700, 200);
-    Console.Beep(600, 200);
-    Console.Beep(500, 200);
-    Console.Beep(400, 300);
-    Console.Beep(300, 500);
-}
-}
+            if (Vidas == 0)
+            {
+                Console.Beep(700, 200);
+                Console.Beep(600, 200);
+                Console.Beep(500, 200);
+                Console.Beep(400, 300);
+                Console.Beep(300, 500);
+            }
         }
-        
     }
 
     public void SomarPontos()
@@ -93,7 +80,7 @@ if (Vidas == 0)
     }
 }
 
-    {
+  
 
     public void AtualizarVelocidade()
 {
