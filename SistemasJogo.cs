@@ -7,9 +7,8 @@ public class SistemaJogo
     public int Nivel { get; set; }
     public int Velocidade { get; set; }
     public int ObstaculosDesviados { get; set; }
-
+    public int Recorde { get; set; }
     public char[,] Pista = new char[13, 35];
-
     public int UltimaPontuacao { get; set; }
     public int UltimoNivel { get; set; }
     public int UltimosObstaculos { get; set; }
@@ -24,6 +23,7 @@ public class SistemaJogo
         Velocidade = 80;
         ObstaculosDesviados = 0;
         nivelAnterior = 1;
+        Recorde = 0;
 
         for (int linha = 0; linha < 13; linha++)
         {
@@ -46,6 +46,11 @@ public class SistemaJogo
     {
         Pontos += 10;
         ObstaculosDesviados++;
+
+        if (Pontos > Recorde)
+        {
+            Recorde = Pontos;
+        }
     }
 
     public void AtualizarNivel()
@@ -97,5 +102,15 @@ public class SistemaJogo
         UltimaPontuacao = Pontos;
         UltimoNivel = Nivel;
         UltimosObstaculos = ObstaculosDesviados;
+    }
+    public void LimparPista()
+    {
+        for (int linha = 0; linha < 13; linha++)
+        {
+            for (int coluna = 0; coluna < 35; coluna++)
+            {
+                Pista[linha, coluna] = ' ';
+            }
+        }
     }
 }
