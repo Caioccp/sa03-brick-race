@@ -13,17 +13,17 @@ public class Jogo
 
     Obstaculo obstaculo = new Obstaculo(30);
 
-    public void Iniciar()
+public void Iniciar()
+{
+    while (rodando)
     {
-        while (rodando)
-        {
-            DesenharTela();
-            LerTeclado();
-            Atualizar();
-            Thread.Sleep(sistema.Velocidade);
-        }
-    }
+        DesenharTela();
+        LerTeclado();
+        Atualizar();
 
+        Thread.Sleep(sistema.Velocidade);
+    }
+}
     void DesenharTela()
 {
     Console.Clear();
