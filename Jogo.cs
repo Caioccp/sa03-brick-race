@@ -50,10 +50,11 @@ public class Jogo
 
         Console.WriteLine();
 
-        Console.WriteLine("VIDAS : " + sistema.Vidas);
-        Console.WriteLine("PONTOS: " + sistema.Pontos);
-        Console.WriteLine("NÍVEL : " + sistema.Nivel);
-        Console.WriteLine("VELOC.: " + sistema.Velocidade + " ms");
+        Console.WriteLine("VIDAS   : " + sistema.Vidas);
+        Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
+        Console.WriteLine("RECORDE : " + sistema.Recorde.ToString("D6"));
+        Console.WriteLine("NÍVEL   : " + sistema.Nivel);
+        Console.WriteLine("VELOC.  : " + sistema.Velocidade + " ms");   
 
         Console.WriteLine();
 
@@ -82,7 +83,7 @@ public class Jogo
     void Atualizar()
     {
         sistema.LimparPista();
-        
+
         obstaculo.CriarObstaculo();
         obstaculo.Atualizar();
 
