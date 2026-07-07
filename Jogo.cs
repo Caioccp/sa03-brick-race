@@ -15,6 +15,8 @@ public class Jogo
 
 public void Iniciar()
 {
+    Som.Iniciar();
+
     while (rodando)
     {
         DesenharTela();
@@ -23,6 +25,8 @@ public void Iniciar()
 
         Thread.Sleep(sistema.Velocidade);
     }
+
+    Som.Parar();
 }
     void DesenharTela()
     {
