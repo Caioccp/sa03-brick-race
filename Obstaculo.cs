@@ -6,11 +6,8 @@ public class Obstaculo
     public List<(int Linha, int Pista, int Tipo)> Obstaculos { get; private set; }
 
     private Random random = new Random();
-
     private int alturaTela;
-
     private int ultimoTipo = -1;
-
     private int ultimaPista = -1;
 
     public Obstaculo(int alturaTela)
@@ -59,8 +56,7 @@ public class Obstaculo
     {
         for (int i = 0; i < Obstaculos.Count; i++)
         {
-            Obstaculos[i] =
-            (
+            Obstaculos[i] = (
                 Obstaculos[i].Linha + 1,
                 Obstaculos[i].Pista,
                 Obstaculos[i].Tipo
@@ -71,37 +67,40 @@ public class Obstaculo
     }
 
     public void Desenhar()
-{
-    // Cor dos obstáculos
-    Console.ForegroundColor = ConsoleColor.Red;
-
-    foreach (var obstaculo in Obstaculos)
     {
-        int x = obstaculo.Pista == 0 ? 8 : 26;
+        Console.ForegroundColor = ConsoleColor.Red;
 
-        Console.SetCursorPosition(x, obstaculo.Linha);
-
-        switch (obstaculo.Tipo)
+        foreach (var obstaculo in Obstaculos)
         {
-            case 0:
-                Console.Write("[☄]");
-                break;
+            int x = obstaculo.Pista == 0 ? 8 : 26;
 
-            case 1:
-                Console.Write("<^>");
-                break;
+            Console.SetCursorPosition(x, obstaculo.Linha);
 
-            case 2:
-                Console.Write("<✦>");
-                break;
-
-            case 3:
-                Console.Write("(◉)");
-                break;
+            switch (obstaculo.Tipo)
+            {
+                case 0:
+                    Console.Write("[☄]");
+                    break;
+                case 1:
+                    Console.Write("<^>");
+                    break;
+                case 2:
+                    Console.Write("<✦>");
+                    break;
+                case 3:
+                    Console.Write("(◉)");
+                    break;
+            }
         }
+
+        Console.ResetColor();
     }
 
-    // Volta para a cor padrão
-    Console.ResetColor();
-}
+    public int CalcularEspacoLivre(int linha)
+    {
+        if (linha >= alturaTela)
+            return 0;
+
+        return 1 + CalcularEspacoLivre(linha + 1);
+    }
 }
