@@ -81,6 +81,8 @@ public class Jogo
 
     void Atualizar()
     {
+        sistema.LimparPista();
+        
         obstaculo.CriarObstaculo();
         obstaculo.Atualizar();
 

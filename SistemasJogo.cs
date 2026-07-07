@@ -98,4 +98,14 @@ public class SistemaJogo
         UltimoNivel = Nivel;
         UltimosObstaculos = ObstaculosDesviados;
     }
+    public void LimparPista()
+    {
+        for (int linha = 0; linha < 13; linha++)
+        {
+            for (int coluna = 0; coluna < 35; coluna++)
+            {
+                Pista[linha, coluna] = ' ';
+            }
+        }
+    }
 }
