@@ -54,10 +54,10 @@ public void Iniciar()
 
         Console.WriteLine();
 
-        Console.WriteLine("VIDAS : " + sistema.Vidas);
-        Console.WriteLine("PONTOS: " + sistema.Pontos);
-        Console.WriteLine("NÍVEL : " + sistema.Nivel);
-        Console.WriteLine("VELOC.: " + sistema.Velocidade + " ms");
+        Console.WriteLine("VIDAS   : " + sistema.Vidas);
+        Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
+        Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
+        Console.WriteLine("VELOC.  : " + sistema.Velocidade + " ms");
 
         Console.WriteLine();
 
