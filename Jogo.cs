@@ -5,6 +5,8 @@ public class Jogo
 {
     bool rodando = true;
 
+    int inicioDaPista = 20;
+
     SistemaJogo sistema = new SistemaJogo();
 
     Foguete foguete = new Foguete();
@@ -32,14 +34,19 @@ public class Jogo
 
         Console.WriteLine();
 
-        Console.WriteLine("+-------------------------+");
+       Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
 
-        for (int i = 0; i < 12; i++)
-        {
-            Console.WriteLine("|           |             |");
-        }
+Console.WriteLine("+-----------------------------------+");
 
-        Console.WriteLine("+-------------------------+");
+for (int i = 0; i < 20; i++)
+{
+    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+    Console.WriteLine("|                 |                 |");
+}
+
+Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+
+Console.WriteLine("+-----------------------------------+");
 
         Console.WriteLine();
 

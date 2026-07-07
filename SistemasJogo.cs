@@ -19,7 +19,7 @@ public class SistemaJogo
         Vidas = 3;
         Pontos = 0;
         Nivel = 1;
-        Velocidade = 300;
+        Velocidade = 80;
         ObstaculosDesviados = 0;
         nivelAnterior = 1;
     }
@@ -68,17 +68,17 @@ public class SistemaJogo
     {
         switch (Nivel)
         {
-            case 1: Velocidade = 300; break;
-            case 2: Velocidade = 280; break;
-            case 3: Velocidade = 260; break;
-            case 4: Velocidade = 240; break;
-            case 5: Velocidade = 220; break;
-            case 6: Velocidade = 200; break;
-            case 7: Velocidade = 180; break;
-            case 8: Velocidade = 160; break;
-            case 9: Velocidade = 140; break;
-            case 10: Velocidade = 120; break;
-            default: Velocidade = 120; break;
+            case 1: Velocidade = 80; break;
+            case 2: Velocidade = 70; break;
+            case 3: Velocidade = 60; break;
+            case 4: Velocidade = 50; break;
+            case 5: Velocidade = 45; break;
+            case 6: Velocidade = 40; break;
+            case 7: Velocidade = 35; break;
+            case 8: Velocidade = 30; break;
+            case 9: Velocidade = 25; break;
+            case 10: Velocidade = 20; break;
+            default: Velocidade = 20; break;
         }
     }
 
