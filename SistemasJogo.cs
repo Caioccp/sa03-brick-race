@@ -68,17 +68,17 @@ public class SistemaJogo
     {
         switch (Nivel)
         {
-            case 1: Velocidade = 80; break;
-            case 2: Velocidade = 70; break;
-            case 3: Velocidade = 60; break;
-            case 4: Velocidade = 50; break;
-            case 5: Velocidade = 45; break;
-            case 6: Velocidade = 40; break;
-            case 7: Velocidade = 35; break;
-            case 8: Velocidade = 30; break;
-            case 9: Velocidade = 25; break;
-            case 10: Velocidade = 20; break;
-            default: Velocidade = 20; break;
+            case 1: Velocidade = 150; break;
+            case 2: Velocidade = 140; break;
+            case 3: Velocidade = 130; break;
+            case 4: Velocidade = 120; break;
+            case 5: Velocidade = 110; break;
+            case 6: Velocidade = 100; break;
+            case 7: Velocidade = 90; break;
+            case 8: Velocidade = 80; break;
+            case 9: Velocidade = 70; break;
+            case 10: Velocidade = 60; break;
+            default: Velocidade = 50; break;
         }
     }
 

@@ -41,16 +41,16 @@ public class Foguete
     public void Desenhar()
     {
         int coluna;
-        int linha = 21;
+        int linha = 10;
 
         // Escolhe a pista
         if (Pista == 0)
         {
-            coluna = 28;
+            coluna = 8;
         }
         else
         {
-            coluna = 46;
+            coluna = 26;
         }
 
         Console.SetCursorPosition(coluna, linha);
