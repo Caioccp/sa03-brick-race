@@ -1,7 +1,8 @@
 using System;
 
 public class Menu
-{
+{  
+    
     public void Exibir()
     {
         int opcao;
@@ -108,15 +109,27 @@ public class Menu
         Console.ReadKey();
     }
 
+   
     void MostrarResultado()
+{
+  Console.Clear();
+
+    Console.WriteLine("===== ÚLTIMO RESULTADO =====");
+    Console.WriteLine();
+
+    if (!SistemaJogo.ExisteResultado)
     {
-
-        Console.Clear();
-
-        Console.WriteLine("===== ÚLTIMO RESULTADO =====");
-
-        Console.WriteLine("Ainda não implementado.");
-
-        Console.ReadKey();
+        Console.WriteLine("Nenhuma partida foi realizada.");
     }
+    else
+    {
+        Console.WriteLine($"Pontuação........: {SistemaJogo.UltimaPontuacao}");
+        Console.WriteLine($"Nível............: {SistemaJogo.UltimoNivel}");
+        Console.WriteLine($"Obstáculos.......: {SistemaJogo.UltimosObstaculos}");
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Pressione qualquer tecla para voltar...");
+    Console.ReadKey();
+}
 }

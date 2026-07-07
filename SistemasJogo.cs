@@ -10,9 +10,10 @@ public class SistemaJogo
 
     public char[,] Pista = new char[13, 35];
 
-    public int UltimaPontuacao { get; set; }
-    public int UltimoNivel { get; set; }
-    public int UltimosObstaculos { get; set; }
+    public static int UltimaPontuacao { get; private set; }
+    public static int UltimoNivel { get; private set; }
+    public static int UltimosObstaculos { get; private set; }
+    public static bool ExisteResultado { get; private set; }
 
     private int nivelAnterior;
 
@@ -94,8 +95,11 @@ public class SistemaJogo
 
     public void SalvarResultado()
     {
-        UltimaPontuacao = Pontos;
-        UltimoNivel = Nivel;
-        UltimosObstaculos = ObstaculosDesviados;
+        
+    UltimaPontuacao = Pontos;
+    UltimoNivel = Nivel;
+    UltimosObstaculos = ObstaculosDesviados;
+    ExisteResultado = true;
+
     }
 }
