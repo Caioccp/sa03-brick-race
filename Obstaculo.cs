@@ -47,7 +47,12 @@ public class Obstaculo
 
         ultimoTipo = tipo;
 
-        Obstaculos.Add((0, pista, tipo));
+        int espaco = CalcularEspacoLivre(0);
+
+        if (espaco > 5)
+        {
+            Obstaculos.Add((0, pista, tipo));
+        }
     }
 
     public void Atualizar()
@@ -92,5 +97,12 @@ public class Obstaculo
                     break;
             }
         }
+    }
+    public int CalcularEspacoLivre(int linha)
+    {
+        if (linha >= alturaTela)
+            return 0;
+
+        return 1 + CalcularEspacoLivre(linha + 1);
     }
 }

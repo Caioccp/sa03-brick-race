@@ -8,6 +8,8 @@ public class SistemaJogo
     public int Velocidade { get; set; }
     public int ObstaculosDesviados { get; set; }
 
+    public char[,] Pista = new char[13, 35];
+
     public int UltimaPontuacao { get; set; }
     public int UltimoNivel { get; set; }
     public int UltimosObstaculos { get; set; }
@@ -22,6 +24,14 @@ public class SistemaJogo
         Velocidade = 80;
         ObstaculosDesviados = 0;
         nivelAnterior = 1;
+
+        for (int linha = 0; linha < 13; linha++)
+        {
+            for (int coluna = 0; coluna < 35; coluna++)
+            {
+                Pista[linha, coluna] = ' ';
+            }
+        }
     }
 
     public void PerderVida()
