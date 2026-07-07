@@ -1,51 +1,33 @@
-using NAudio.Wave;
+using System;
+using System.Runtime.InteropServices;
 
 public static class Som
 {
-    // Responsável por enviar o áudio para as caixas de som
-    private static WaveOutEvent? saida;
+    // Importa a função PlaySound da biblioteca do Windows
+    [DllImport("winmm.dll")]
+    private static extern bool PlaySound(
+        string? pszSound,
+        IntPtr hmod,
+        uint fdwSound);
 
-    // Responsável por ler o arquivo .wav
-    private static AudioFileReader? musica;
+    // Constantes que dizem como o som deve tocar
+    private const uint SND_ASYNC = 0x0001; // Toca sem travar o jogo
+    private const uint SND_LOOP = 0x0008;  // Repete infinitamente
+    private const uint SND_FILENAME = 0x00020000; // O parâmetro é um arquivo
 
+    // Inicia a música
     public static void Iniciar()
     {
-        // Abre o arquivo da música
-        musica = new AudioFileReader("Assets/musica.wav");
-
-        // Cria o reprodutor
-        saida = new WaveOutEvent();
-
-        // Liga a música ao reprodutor
-        saida.Init(musica);
-
-        // Quando a música terminar...
-        saida.PlaybackStopped += ReiniciarMusica;
-
-        // Começa a tocar
-        saida.Play();
+        PlaySound(
+            @"Assets\musica.wav",
+            IntPtr.Zero,
+            SND_ASYNC | SND_LOOP | SND_FILENAME);
     }
 
-    private static void ReiniciarMusica(object? sender, StoppedEventArgs e)
-    {
-        if (musica != null && saida != null)
-        {
-            // Volta para o início do arquivo
-            musica.Position = 0;
-
-            // Toca novamente
-            saida.Play();
-        }
-    }
-
+    // Para a música
     public static void Parar()
     {
-        saida?.Stop();
-
-        musica?.Dispose();
-        saida?.Dispose();
-
-        musica = null;
-        saida = null;
+        // Passando null faz o Windows parar qualquer música iniciada pelo PlaySound
+        PlaySound(null, IntPtr.Zero, 0);
     }
 }
