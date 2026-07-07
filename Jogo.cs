@@ -13,72 +13,58 @@ public class Jogo
 
     Obstaculo obstaculo = new Obstaculo(30);
 
-    public void Iniciar()
-    {
-        while (rodando)
-        {
-            DesenharTela();
-            LerTeclado();
-            Atualizar();
-            Thread.Sleep(sistema.Velocidade);
-        }
-    }
-
-    void DesenharTela()
+public void Iniciar()
 {
-    Console.Clear();
-
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("================================================");
-    Console.WriteLine("                 BRICK RACE");
-    Console.WriteLine("================================================");
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-
-    Console.ForegroundColor = ConsoleColor.DarkYellow;
-    Console.WriteLine("+-----------------------------------+");
-
-    for (int i = 0; i < 13; i++)
+    while (rodando)
     {
-        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-        Console.WriteLine("|                 |                 |");
+        DesenharTela();
+        LerTeclado();
+        Atualizar();
+
+        Thread.Sleep(sistema.Velocidade);
     }
-
-    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-    Console.WriteLine("+-----------------------------------+");
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("VIDAS : " + sistema.Vidas);
-
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("PONTOS: " + sistema.Pontos);
-
-    Console.ForegroundColor = ConsoleColor.Magenta;
-    Console.WriteLine("NÍVEL : " + sistema.Nivel);
-
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("VELOC.: " + sistema.Velocidade + " ms");
-
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("CONTROLES");
-    Console.WriteLine("A ou ← = Esquerda");
-    Console.WriteLine("D ou → = Direita");
-    Console.WriteLine("ESC = Sair");
-    Console.ResetColor();
-
-    foguete.Desenhar();
-    obstaculo.Desenhar();
 }
+    void DesenharTela()
+    {
+        Console.Clear();
+
+        Console.WriteLine("================================================");
+        Console.WriteLine("                 BRICK RACE");
+        Console.WriteLine("================================================");
+
+        Console.WriteLine();
+
+        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+
+        Console.WriteLine("+-----------------------------------+");
+
+        for (int i = 0; i < 13; i++)
+        {
+            Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+            Console.WriteLine("|                 |                 |");
+        }
+
+        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+
+        Console.WriteLine("+-----------------------------------+");
+
+        Console.WriteLine();
+
+        Console.WriteLine("VIDAS : " + sistema.Vidas);
+        Console.WriteLine("PONTOS: " + sistema.Pontos);
+        Console.WriteLine("NÍVEL : " + sistema.Nivel);
+        Console.WriteLine("VELOC.: " + sistema.Velocidade + " ms");
+
+        Console.WriteLine();
+
+        Console.WriteLine("CONTROLES");
+        Console.WriteLine("A ou ← = Esquerda");
+        Console.WriteLine("D ou → = Direita");
+        Console.WriteLine("ESC = Sair");
+
+        foguete.Desenhar();
+        obstaculo.Desenhar();
+    }
 
     void LerTeclado()
     {
@@ -132,32 +118,20 @@ public class Jogo
 }
 
     void GameOver()
-{
-    Console.Clear();
+    {
+        Console.Clear();
 
-    Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("╔════════════════════════════════════════════╗");
+        Console.WriteLine("║               FIM DE JOGO                  ║");
+        Console.WriteLine("╠════════════════════════════════════════════╣");
+        Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+        Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
+Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
+        Console.WriteLine("║                                            ║");
+        Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
+        Console.WriteLine("║ ao menu principal.                         ║");
+        Console.WriteLine("╚════════════════════════════════════════════╝");
 
-    Console.WriteLine("╔════════════════════════════════════════════╗");
-    Console.WriteLine("║               FIM DE JOGO                  ║");
-    Console.WriteLine("╠════════════════════════════════════════════╣");
-
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
-
-    Console.ForegroundColor = ConsoleColor.Magenta;
-    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
-
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
-
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("║                                            ║");
-    Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
-    Console.WriteLine("║ ao menu principal.                         ║");
-    Console.WriteLine("╚════════════════════════════════════════════╝");
-
-    Console.ResetColor();
-
-    Console.ReadKey();
-}
+        Console.ReadKey();
+    }
 }
