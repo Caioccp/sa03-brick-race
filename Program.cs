@@ -9,7 +9,7 @@ class Program
         Console.InputEncoding = Encoding.UTF8;
         if (OperatingSystem.IsWindows())
         {
-            Console.WindowHeight = 30; 
+            Console.WindowHeight = 30;
             Console.WindowWidth = 80;
             Console.BufferHeight = 200;
             Console.BufferWidth = 100;

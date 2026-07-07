@@ -5,7 +5,7 @@ public class Jogo
 {
     bool rodando = true;
 
-    int inicioDaPista = 20;
+    int inicioDaPista = 1;
 
     SistemaJogo sistema = new SistemaJogo();
 
@@ -28,25 +28,25 @@ public class Jogo
     {
         Console.Clear();
 
-        Console.WriteLine("==============================================");
-        Console.WriteLine("              BRICK RACE");
-        Console.WriteLine("==============================================");
+        Console.WriteLine("================================================");
+        Console.WriteLine("                 BRICK RACE");
+        Console.WriteLine("================================================");
 
         Console.WriteLine();
 
-       Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
 
-Console.WriteLine("+-----------------------------------+");
+        Console.WriteLine("+-----------------------------------+");
 
-for (int i = 0; i < 20; i++)
-{
-    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-    Console.WriteLine("|                 |                 |");
-}
+        for (int i = 0; i < 13; i++)
+        {
+            Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+            Console.WriteLine("|                 |                 |");
+        }
 
-Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
 
-Console.WriteLine("+-----------------------------------+");
+        Console.WriteLine("+-----------------------------------+");
 
         Console.WriteLine();
 
@@ -80,42 +80,42 @@ Console.WriteLine("+-----------------------------------+");
     }
 
     void Atualizar()
-{
-    obstaculo.CriarObstaculo();
-    obstaculo.Atualizar();
+    {
+        obstaculo.CriarObstaculo();
+        obstaculo.Atualizar();
 
-    VerificarColisao();
+        VerificarColisao();
 
-    sistema.AtualizarNivel();
-    sistema.AtualizarVelocidade();
-}
+        sistema.AtualizarNivel();
+        sistema.AtualizarVelocidade();
+    }
 
     void VerificarColisao()
-{
-    for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
     {
-        var o = obstaculo.Obstaculos[i];
-
-        if (o.Pista == foguete.Pista && o.Linha >= 13 && o.Linha <= 16)
+        for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
         {
-            sistema.PerderVida();
+            var o = obstaculo.Obstaculos[i];
 
-            obstaculo.Obstaculos.RemoveAt(i);
-
-            if (sistema.Vidas <= 0)
+            if (o.Pista == foguete.Pista && o.Linha >= 13 && o.Linha <= 16)
             {
-                sistema.SalvarResultado();
-                GameOver();
-                rodando = false;
+                sistema.PerderVida();
+
+                obstaculo.Obstaculos.RemoveAt(i);
+
+                if (sistema.Vidas <= 0)
+                {
+                    sistema.SalvarResultado();
+                    GameOver();
+                    rodando = false;
+                }
+            }
+            else if (o.Linha > 16)
+            {
+                sistema.SomarPontos();
+                obstaculo.Obstaculos.RemoveAt(i);
             }
         }
-        else if (o.Linha > 16)
-        {
-            sistema.SomarPontos();
-            obstaculo.Obstaculos.RemoveAt(i);
-        }
     }
-}
 
     void GameOver()
     {
