@@ -38,32 +38,37 @@ public class Foguete
     }
 
     // Desenha o foguete
-    public void Desenhar()
+public void Desenhar()
+{
+    int coluna;
+    int linha = 14;
+
+    // Escolhe a pista
+    if (Pista == 0)
     {
-        int coluna;
-        int linha = 14;
-
-        // Escolhe a pista
-        if (Pista == 0)
-        {
-            coluna = 8;
-        }
-        else
-        {
-            coluna = 26;
-        }
-
-        Console.SetCursorPosition(coluna, linha);
-        Console.Write(" ▲ ");
-
-        Console.SetCursorPosition(coluna, linha + 1);
-        Console.Write("/█\\");
-
-        Console.SetCursorPosition(coluna, linha + 2);
-        Console.Write("/_\\");
-
-        Console.SetCursorPosition(coluna, linha + 3);
-        Console.Write("^v^");
-
+        coluna = 8;
     }
+    else
+    {
+        coluna = 26;
+    }
+
+    // Cor do foguete
+    Console.ForegroundColor = ConsoleColor.Green;
+
+    Console.SetCursorPosition(coluna, linha);
+    Console.Write(" ▲ ");
+
+    Console.SetCursorPosition(coluna, linha + 1);
+    Console.Write("/█\\");
+
+    Console.SetCursorPosition(coluna, linha + 2);
+    Console.Write("/_\\");
+
+    Console.SetCursorPosition(coluna, linha + 3);
+    Console.Write("^v^");
+
+    // Volta para a cor padrão
+    Console.ResetColor();
+}
 }
