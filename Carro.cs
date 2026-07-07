@@ -54,7 +54,7 @@ public void Desenhar()
     }
 
     // Cor do foguete
-    Console.ForegroundColor = ConsoleColor.Green;
+    Console.ForegroundColor = ConsoleColor.White;
 
     Console.SetCursorPosition(coluna, linha);
     Console.Write(" ▲ ");
