@@ -14,10 +14,7 @@ public class SistemaJogo
     public static int UltimoNivel { get; private set; }
     public static int UltimosObstaculos { get; private set; }
     public static bool ExisteResultado { get; private set; }
-    public int UltimaPontuacao { get; set; }
-    public int UltimoNivel { get; set; }
-    public int UltimosObstaculos { get; set; }
-
+   
     private int nivelAnterior;
 
     public SistemaJogo()
