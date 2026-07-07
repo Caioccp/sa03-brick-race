@@ -23,7 +23,7 @@ public class Obstaculo
     {
         foreach (var obstaculo in Obstaculos)
         {
-            if (obstaculo.Linha < 5)
+            if (obstaculo.Linha < 8)
                 return;
         }
 
@@ -69,7 +69,7 @@ public class Obstaculo
     {
         foreach (var obstaculo in Obstaculos)
         {
-            int x = obstaculo.Pista == 0 ? 5 : 15;
+            int x = obstaculo.Pista == 0 ? 8 : 26;
 
             Console.SetCursorPosition(x, obstaculo.Linha);
 

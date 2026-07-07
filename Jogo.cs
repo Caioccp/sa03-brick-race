@@ -91,31 +91,31 @@ public class Jogo
     }
 
     void VerificarColisao()
+{
+    for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
     {
-        for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
+        var o = obstaculo.Obstaculos[i];
+
+        if (o.Pista == foguete.Pista && o.Linha >= 14 && o.Linha <= 17)
         {
-            var o = obstaculo.Obstaculos[i];
+            sistema.PerderVida();
 
-            if (o.Pista == foguete.Pista && o.Linha >= 13 && o.Linha <= 16)
+            obstaculo.Obstaculos.RemoveAt(i);
+
+            if (sistema.Vidas <= 0)
             {
-                sistema.PerderVida();
-
-                obstaculo.Obstaculos.RemoveAt(i);
-
-                if (sistema.Vidas <= 0)
-                {
-                    sistema.SalvarResultado();
-                    GameOver();
-                    rodando = false;
-                }
-            }
-            else if (o.Linha > 16)
-            {
-                sistema.SomarPontos();
-                obstaculo.Obstaculos.RemoveAt(i);
+                sistema.SalvarResultado();
+                GameOver();
+                rodando = false;
             }
         }
+        else if (o.Linha > 18)
+        {
+            sistema.SomarPontos();
+            obstaculo.Obstaculos.RemoveAt(i);
+        }
     }
+}
 
     void GameOver()
     {
@@ -125,8 +125,8 @@ public class Jogo
         Console.WriteLine("║               FIM DE JOGO                  ║");
         Console.WriteLine("╠════════════════════════════════════════════╣");
         Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
-        Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D2")}                        ║");
-        Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados}                    ║");
+        Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
+Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
         Console.WriteLine("║                                            ║");
         Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
         Console.WriteLine("║ ao menu principal.                         ║");
