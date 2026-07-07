@@ -71,38 +71,37 @@ public class Obstaculo
     }
 
     public void Desenhar()
+{
+    // Cor dos obstáculos
+    Console.ForegroundColor = ConsoleColor.Red;
+
+    foreach (var obstaculo in Obstaculos)
     {
-        foreach (var obstaculo in Obstaculos)
+        int x = obstaculo.Pista == 0 ? 8 : 26;
+
+        Console.SetCursorPosition(x, obstaculo.Linha);
+
+        switch (obstaculo.Tipo)
         {
-            int x = obstaculo.Pista == 0 ? 8 : 26;
+            case 0:
+                Console.Write("[☄]");
+                break;
 
-            Console.SetCursorPosition(x, obstaculo.Linha);
+            case 1:
+                Console.Write("<^>");
+                break;
 
-            switch (obstaculo.Tipo)
-            {
-                case 0:
-                    Console.Write("[☄]");
-                    break;
+            case 2:
+                Console.Write("<✦>");
+                break;
 
-                case 1:
-                    Console.Write("<^>");
-                    break;
-
-                case 2:
-                    Console.Write("<✦>");
-                    break;
-
-                case 3:
-                    Console.Write("(◉)");
-                    break;
-            }
+            case 3:
+                Console.Write("(◉)");
+                break;
         }
     }
-    public int CalcularEspacoLivre(int linha)
-    {
-        if (linha >= alturaTela)
-            return 0;
 
-        return 1 + CalcularEspacoLivre(linha + 1);
-    }
+    // Volta para a cor padrão
+    Console.ResetColor();
+}
 }
