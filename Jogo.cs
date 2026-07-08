@@ -137,8 +137,9 @@ public void Iniciar()
 void GameOver()
 
 {
-    Console.Clear();
+ Som.Parar();
 
+    Console.Clear();
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("╔════════════════════════════════════════════╗");
     Console.WriteLine("║               FIM DE JOGO                  ║");
