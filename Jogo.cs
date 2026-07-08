@@ -25,8 +25,7 @@ public void Iniciar()
 
         Thread.Sleep(sistema.Velocidade);
     }
-
-    Som.Parar();
+            Som.Parar();
 }
     void DesenharTela()
     {
@@ -121,21 +120,23 @@ public void Iniciar()
     }
 }
 
-    void GameOver()
-    {
-        Console.Clear();
+void GameOver()
+{
+    Som.Parar();
 
-        Console.WriteLine("╔════════════════════════════════════════════╗");
-        Console.WriteLine("║               FIM DE JOGO                  ║");
-        Console.WriteLine("╠════════════════════════════════════════════╣");
-        Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
-        Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
-Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
-        Console.WriteLine("║                                            ║");
-        Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
-        Console.WriteLine("║ ao menu principal.                         ║");
-        Console.WriteLine("╚════════════════════════════════════════════╝");
+    Console.Clear();
 
-        Console.ReadKey();
-    }
+    Console.WriteLine("╔════════════════════════════════════════════╗");
+    Console.WriteLine("║               FIM DE JOGO                  ║");
+    Console.WriteLine("╠════════════════════════════════════════════╣");
+    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
+    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
+    Console.WriteLine("║                                            ║");
+    Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
+    Console.WriteLine("║ ao menu principal.                         ║");
+    Console.WriteLine("╚════════════════════════════════════════════╝");
+
+    Console.ReadKey();
+}
 }
