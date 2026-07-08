@@ -15,7 +15,7 @@ public class Menu
         Console.WriteLine("╔════════════════════════════════════╗");
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("║            BRICK RACE              ║");
+        Console.WriteLine("║             SPACE RUN              ║");
 
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("╠════════════════════════════════════╣");
