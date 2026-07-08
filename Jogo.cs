@@ -135,9 +135,8 @@ public void Iniciar()
 }
 
 void GameOver()
-
 {
- Som.Parar();
+    Som.Parar();
 
     Console.Clear();
 
@@ -165,9 +164,5 @@ void GameOver()
 
     Console.ReadKey();
 }
-
-
-
-    Console.ResetColor();
-    Console.ReadKey();
 }
+
