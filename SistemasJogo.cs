@@ -15,6 +15,7 @@ public class SistemaJogo
     public static int UltimaPontuacao;
     public static int UltimoNivel;
     public static int UltimosObstaculos;
+   public static int Recorde = 0;
    
     private int nivelAnterior;
 
@@ -100,5 +101,10 @@ public class SistemaJogo
     UltimoNivel = Nivel;
     UltimosObstaculos = ObstaculosDesviados;
     ExisteResultado = true;
+
+    if (Pontos > Recorde)
+        {
+            Recorde = Pontos;
+        }
 }
 }
