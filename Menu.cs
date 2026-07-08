@@ -90,11 +90,12 @@ public class Menu
     Console.WriteLine("===== INSTRUÇÕES =====");
 
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("- Desvie dos obstáculos");
-    Console.WriteLine("- Use A/D ou ← →");
-    Console.WriteLine("- Você começa com 3 vidas");
-    Console.WriteLine("- Cada colisão perde 1 vida");
-    Console.WriteLine("- 0 vidas = fim de jogo");
+    Console.WriteLine("- Desvie dos obstáculos, que estão em vermelho.");
+    Console.WriteLine("- Use A ou ← para andar para a esquerda.");
+    Console.WriteLine("- Use D ou → para andar para a direita.");
+    Console.WriteLine("- Você começa com 3 vidas.");
+    Console.WriteLine("- A cada colisão, você perde 1 vida.");
+    Console.WriteLine("- Quando chegar em 0 vidas, o jogo acaba.");
 
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("\nPressione qualquer tecla...");

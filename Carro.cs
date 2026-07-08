@@ -8,23 +8,19 @@ public class Foguete
 
     public Foguete()
     {
-        // O foguete começa na pista da esquerda
         Pista = 0;
     }
 
-    // Move para a pista da esquerda
     public void MoverEsquerda()
     {
         Pista = 0;
     }
 
-    // Move para a pista da direita
     public void MoverDireita()
     {
         Pista = 1;
     }
 
-    // Lê as teclas do jogador
     public void LerTecla(ConsoleKey tecla)
     {
         if (tecla == ConsoleKey.A || tecla == ConsoleKey.LeftArrow)
@@ -37,7 +33,6 @@ public class Foguete
         }
     }
 
-    // Desenha o foguete
 public void Desenhar()
 {
     int coluna;
