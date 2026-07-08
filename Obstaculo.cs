@@ -24,16 +24,23 @@ public class Obstaculo
                 return;
         }
 
-        int pista;
+       int pista;
 
-        do
-        {
-            pista = random.Next(0, 2);
-        }
-        while (pista == ultimaPista);
+if (ultimaPista == -1)
+{
 
-        ultimaPista = pista;
+    pista = random.Next(0, 2);
+}
+else
+{
 
+    if (random.Next(100) < 75)
+        pista = 1 - ultimaPista;
+    else
+        pista = ultimaPista;
+}
+
+ultimaPista = pista;
         int tipo;
 
         do
