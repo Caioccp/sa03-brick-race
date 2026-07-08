@@ -83,48 +83,56 @@ public class Menu
 }
 
     void MostrarInstrucoes()
-    {
+{
+    Console.Clear();
 
-        Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("===== INSTRUÇÕES =====");
 
-        Console.WriteLine("===== INSTRUÇÕES =====");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("- Desvie dos obstáculos");
+    Console.WriteLine("- Use A/D ou ← →");
+    Console.WriteLine("- Você começa com 3 vidas");
+    Console.WriteLine("- Cada colisão perde 1 vida");
+    Console.WriteLine("- 0 vidas = fim de jogo");
 
-        Console.WriteLine("- Desvie dos obstáculos");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\nPressione qualquer tecla...");
 
-        Console.WriteLine("- Use A/D ou ← →");
-
-        Console.WriteLine("- Você começa com 3 vidas");
-
-        Console.WriteLine("- Cada colisão perde 1 vida");
-
-        Console.WriteLine("- 0 vidas = fim de jogo");
-
-        Console.WriteLine("\nPressione qualquer tecla...");
-
-        Console.ReadKey();
-    }
-
+    Console.ResetColor();
+    Console.ReadKey();
+}
    
     void MostrarResultado()
 {
-  Console.Clear();
+    Console.Clear();
 
+    Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("===== ÚLTIMO RESULTADO =====");
     Console.WriteLine();
 
     if (!SistemaJogo.ExisteResultado)
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Nenhuma partida foi realizada.");
     }
     else
     {
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Pontuação........: {SistemaJogo.UltimaPontuacao}");
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"Nível............: {SistemaJogo.UltimoNivel}");
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"Obstáculos.......: {SistemaJogo.UltimosObstaculos}");
     }
 
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine();
     Console.WriteLine("Pressione qualquer tecla para voltar...");
+
+    Console.ResetColor();
     Console.ReadKey();
 }
 }
