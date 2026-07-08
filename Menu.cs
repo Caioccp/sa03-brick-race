@@ -4,132 +4,135 @@ public class Menu
 {  
     
     public void Exibir()
+{
+    int opcao;
+
+    do
     {
-        int opcao;
-
-        do
-        {
-
-            Console.Clear();
-
-            Console.WriteLine("╔════════════════════════════════════╗");
-
-            Console.WriteLine("║            BRICK RACE              ║");
-
-            Console.WriteLine("╠════════════════════════════════════╣");
-
-            Console.WriteLine("║ 1 - Iniciar jogo                   ║");
-
-            Console.WriteLine("║ 2 - Instruções                     ║");
-
-            Console.WriteLine("║ 3 - Último resultado               ║");
-
-            Console.WriteLine("║ 0 - Sair                           ║");
-
-            Console.WriteLine("╚════════════════════════════════════╝");
-
-
-            Console.Write("Escolha: ");
-
-            bool ok = int.TryParse(Console.ReadLine()!, out opcao);
-
-            if (!ok)
-            {
-                Console.WriteLine("Opção inválida!");
-
-                Console.ReadKey();
-
-                continue;
-            }
-
-            switch (opcao)
-            {
-
-                case 1:
-
-                    Jogo jogo = new Jogo();
-
-                    jogo.Iniciar();
-
-                    break;
-                // Finaliza este caso do switch
-
-                case 2:
-
-                    MostrarInstrucoes();
-
-                    break;
-                // Encerra este caso
-
-                case 3:
-
-                    MostrarResultado();
-
-                    break;
-                // Encerra este caso
-
-                case 0:
-
-                    Console.WriteLine("Saindo...");
-
-                    break;
-                // Encerra este caso
-
-                default:
-
-                    Console.WriteLine("Opção inválida!");
-
-                    Console.ReadKey();
-
-                    break;
-            }
-
-        } while (opcao != 0);
-    }
-
-    void MostrarInstrucoes()
-    {
-
         Console.Clear();
 
-        Console.WriteLine("===== INSTRUÇÕES =====");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╔════════════════════════════════════╗");
 
-        Console.WriteLine("- Desvie dos obstáculos");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("║            BRICK RACE              ║");
 
-        Console.WriteLine("- Use A/D ou ← →");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╠════════════════════════════════════╣");
 
-        Console.WriteLine("- Você começa com 3 vidas");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("║ 1 - Iniciar jogo                   ║");
+        Console.WriteLine("║ 2 - Instruções                     ║");
+        Console.WriteLine("║ 3 - Último resultado               ║");
 
-        Console.WriteLine("- Cada colisão perde 1 vida");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("║ 0 - Sair                           ║");
 
-        Console.WriteLine("- 0 vidas = fim de jogo");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╚════════════════════════════════════╝");
 
-        Console.WriteLine("\nPressione qualquer tecla...");
+        Console.ResetColor();
 
-        Console.ReadKey();
-    }
+        Console.WriteLine();
 
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Escolha: ");
+        Console.ResetColor();
+
+        bool ok = int.TryParse(Console.ReadLine()!, out opcao);
+
+        if (!ok)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Opção inválida!");
+            Console.ResetColor();
+            Console.ReadKey();
+            continue;
+        }
+
+        switch (opcao)
+        {
+            case 1:
+                Jogo jogo = new Jogo();
+                jogo.Iniciar();
+                break;
+
+            case 2:
+                MostrarInstrucoes();
+                break;
+
+            case 3:
+                MostrarResultado();
+                break;
+
+            case 0:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Saindo...");
+                Console.ResetColor();
+                break;
+
+            default:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Opção inválida!");
+                Console.ResetColor();
+                Console.ReadKey();
+                break;
+        }
+
+    } while (opcao != 0);
+}
+
+    void MostrarInstrucoes()
+{
+    Console.Clear();
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("===== INSTRUÇÕES =====");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("- Desvie dos obstáculos");
+    Console.WriteLine("- Use A/D ou ← →");
+    Console.WriteLine("- Você começa com 3 vidas");
+    Console.WriteLine("- Cada colisão perde 1 vida");
+    Console.WriteLine("- 0 vidas = fim de jogo");
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\nPressione qualquer tecla...");
+
+    Console.ResetColor();
+    Console.ReadKey();
+}
    
     void MostrarResultado()
 {
-  Console.Clear();
+    Console.Clear();
 
+    Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("===== ÚLTIMO RESULTADO =====");
     Console.WriteLine();
 
     if (!SistemaJogo.ExisteResultado)
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Nenhuma partida foi realizada.");
     }
     else
     {
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Pontuação........: {SistemaJogo.UltimaPontuacao}");
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"Nível............: {SistemaJogo.UltimoNivel}");
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"Obstáculos.......: {SistemaJogo.UltimosObstaculos}");
     }
 
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine();
     Console.WriteLine("Pressione qualquer tecla para voltar...");
+
+    Console.ResetColor();
     Console.ReadKey();
 }
 }
