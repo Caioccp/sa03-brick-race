@@ -53,13 +53,13 @@ public void Desenhar()
 
     Console.SetCursorPosition(coluna, linha);
     Console.Write(" ▲ ");
-
+    Console.ForegroundColor = ConsoleColor.Gray;
     Console.SetCursorPosition(coluna, linha + 1);
     Console.Write("/█\\");
 
     Console.SetCursorPosition(coluna, linha + 2);
     Console.Write("/_\\");
-
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.SetCursorPosition(coluna, linha + 3);
     Console.Write("^v^");
 
