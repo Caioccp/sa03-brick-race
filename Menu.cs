@@ -83,27 +83,25 @@ public class Menu
 }
 
     void MostrarInstrucoes()
-    {
+{
+    Console.Clear();
 
-        Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("===== INSTRUÇÕES =====");
 
-        Console.WriteLine("===== INSTRUÇÕES =====");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("- Desvie dos obstáculos");
+    Console.WriteLine("- Use A/D ou ← →");
+    Console.WriteLine("- Você começa com 3 vidas");
+    Console.WriteLine("- Cada colisão perde 1 vida");
+    Console.WriteLine("- 0 vidas = fim de jogo");
 
-        Console.WriteLine("- Desvie dos obstáculos");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("\nPressione qualquer tecla...");
 
-        Console.WriteLine("- Use A/D ou ← →");
-
-        Console.WriteLine("- Você começa com 3 vidas");
-
-        Console.WriteLine("- Cada colisão perde 1 vida");
-
-        Console.WriteLine("- 0 vidas = fim de jogo");
-
-        Console.WriteLine("\nPressione qualquer tecla...");
-
-        Console.ReadKey();
-    }
-
+    Console.ResetColor();
+    Console.ReadKey();
+}
    
     void MostrarResultado()
 {
