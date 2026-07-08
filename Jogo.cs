@@ -135,8 +135,9 @@ public void Iniciar()
 }
 
 void GameOver()
+
 {
-    Som.Parar();
+ Som.Parar();
 
     Console.Clear();
 
