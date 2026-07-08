@@ -19,7 +19,7 @@ public static class Som
     public static void Iniciar()
     {
         PlaySound(
-            @"Assets\musica.wav",
+            @"Assets\musicadefundo.wav",
             IntPtr.Zero,
             SND_ASYNC | SND_LOOP | SND_FILENAME);
     }
