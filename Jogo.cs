@@ -134,7 +134,6 @@ public void Iniciar()
     }
 }
 
-<<<<<<< HEAD
 void GameOver()
 {
     Som.Parar();
@@ -147,7 +146,6 @@ void GameOver()
     Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
     Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
-=======
     void GameOver()
 {
     Console.Clear();
@@ -167,7 +165,6 @@ void GameOver()
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
 
     Console.ForegroundColor = ConsoleColor.White;
->>>>>>> c8a757fccd2c82eb6f4edfd915fca2ecb0fd682b
     Console.WriteLine("║                                            ║");
     Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
     Console.WriteLine("║ ao menu principal.                         ║");
