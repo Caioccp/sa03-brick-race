@@ -25,8 +25,7 @@ public void Iniciar()
 
         Thread.Sleep(sistema.Velocidade);
     }
-
-    Som.Parar();
+            Som.Parar();
 }
     void DesenharTela()
 {
@@ -135,6 +134,18 @@ public void Iniciar()
     }
 }
 
+void GameOver()
+{
+    Som.Parar();
+
+    Console.Clear();
+
+    Console.WriteLine("╔════════════════════════════════════════════╗");
+    Console.WriteLine("║               FIM DE JOGO                  ║");
+    Console.WriteLine("╠════════════════════════════════════════════╣");
+    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos.ToString("D6")}                    ║");
+    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel.ToString("D3")}                       ║");
+    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados.ToString("D3")}                  ║");
     void GameOver()
 {
     Console.Clear();
@@ -159,8 +170,11 @@ public void Iniciar()
     Console.WriteLine("║ ao menu principal.                         ║");
     Console.WriteLine("╚════════════════════════════════════════════╝");
 
+<<<<<<< HEAD
+=======
     Console.ResetColor();
 
+>>>>>>> c8a757fccd2c82eb6f4edfd915fca2ecb0fd682b
     Console.ReadKey();
 }
 }
