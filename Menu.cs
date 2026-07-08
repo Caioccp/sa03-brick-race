@@ -4,88 +4,83 @@ public class Menu
 {  
     
     public void Exibir()
+{
+    int opcao;
+
+    do
     {
-        int opcao;
+        Console.Clear();
 
-        do
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╔════════════════════════════════════╗");
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("║            BRICK RACE              ║");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╠════════════════════════════════════╣");
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("║ 1 - Iniciar jogo                   ║");
+        Console.WriteLine("║ 2 - Instruções                     ║");
+        Console.WriteLine("║ 3 - Último resultado               ║");
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("║ 0 - Sair                           ║");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╚════════════════════════════════════╝");
+
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Escolha: ");
+        Console.ResetColor();
+
+        bool ok = int.TryParse(Console.ReadLine()!, out opcao);
+
+        if (!ok)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Opção inválida!");
+            Console.ResetColor();
+            Console.ReadKey();
+            continue;
+        }
 
-            Console.Clear();
+        switch (opcao)
+        {
+            case 1:
+                Jogo jogo = new Jogo();
+                jogo.Iniciar();
+                break;
 
-            Console.WriteLine("╔════════════════════════════════════╗");
+            case 2:
+                MostrarInstrucoes();
+                break;
 
-            Console.WriteLine("║            BRICK RACE              ║");
+            case 3:
+                MostrarResultado();
+                break;
 
-            Console.WriteLine("╠════════════════════════════════════╣");
+            case 0:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Saindo...");
+                Console.ResetColor();
+                break;
 
-            Console.WriteLine("║ 1 - Iniciar jogo                   ║");
-
-            Console.WriteLine("║ 2 - Instruções                     ║");
-
-            Console.WriteLine("║ 3 - Último resultado               ║");
-
-            Console.WriteLine("║ 0 - Sair                           ║");
-
-            Console.WriteLine("╚════════════════════════════════════╝");
-
-
-            Console.Write("Escolha: ");
-
-            bool ok = int.TryParse(Console.ReadLine()!, out opcao);
-
-            if (!ok)
-            {
+            default:
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Opção inválida!");
-
+                Console.ResetColor();
                 Console.ReadKey();
+                break;
+        }
 
-                continue;
-            }
-
-            switch (opcao)
-            {
-
-                case 1:
-
-                    Jogo jogo = new Jogo();
-
-                    jogo.Iniciar();
-
-                    break;
-                // Finaliza este caso do switch
-
-                case 2:
-
-                    MostrarInstrucoes();
-
-                    break;
-                // Encerra este caso
-
-                case 3:
-
-                    MostrarResultado();
-
-                    break;
-                // Encerra este caso
-
-                case 0:
-
-                    Console.WriteLine("Saindo...");
-
-                    break;
-                // Encerra este caso
-
-                default:
-
-                    Console.WriteLine("Opção inválida!");
-
-                    Console.ReadKey();
-
-                    break;
-            }
-
-        } while (opcao != 0);
-    }
+    } while (opcao != 0);
+}
 
     void MostrarInstrucoes()
     {
