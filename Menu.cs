@@ -105,24 +105,34 @@ public class Menu
    
     void MostrarResultado()
 {
-  Console.Clear();
+    Console.Clear();
 
+    Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("===== ÚLTIMO RESULTADO =====");
     Console.WriteLine();
 
     if (!SistemaJogo.ExisteResultado)
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Nenhuma partida foi realizada.");
     }
     else
     {
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Pontuação........: {SistemaJogo.UltimaPontuacao}");
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"Nível............: {SistemaJogo.UltimoNivel}");
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"Obstáculos.......: {SistemaJogo.UltimosObstaculos}");
     }
 
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine();
     Console.WriteLine("Pressione qualquer tecla para voltar...");
+
+    Console.ResetColor();
     Console.ReadKey();
 }
 }
