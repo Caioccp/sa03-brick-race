@@ -105,8 +105,6 @@ public class SistemaJogo
     if (Pontos > Recorde)
         {
             Recorde = Pontos;
-        }  
-
-        Console.WriteLine($"TESTE RECORDE: {Recorde}");
-}
+        } 
+} 
 }

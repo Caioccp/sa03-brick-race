@@ -62,6 +62,9 @@ public void Iniciar()
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
 
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("RECORDE : " + SistemaJogo.Recorde.ToString("D6"));
+
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
 
