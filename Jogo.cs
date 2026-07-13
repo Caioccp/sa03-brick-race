@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using System.Collections.Generic;
 
 public class Jogo
 {
@@ -14,19 +13,8 @@ public class Jogo
 
     Obstaculo obstaculo = new Obstaculo(30);
 
-    List<Estrela> estrelas = new List<Estrela>();
-
-Random random = new Random();
-
 public void Iniciar()
 {
-    for (int i = 0; i < 25; i++)
-{
-    estrelas.Add(new Estrela(
-        random.Next(0, 13),
-        random.Next(2, 35)));
-}
-
     Som.Iniciar();
 
     while (rodando)
@@ -61,18 +49,6 @@ public void Iniciar()
         Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
         Console.WriteLine("|                 |                 |");
     }
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-
-        foreach (var estrela in estrelas)
-        {
-            Console.SetCursorPosition(
-                inicioDaPista + estrela.Coluna,
-                5 + estrela.Linha);
-
-            Console.Write(".");
-        }
-
-Console.ResetColor();
 
     Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
     Console.WriteLine("+-----------------------------------+");
@@ -127,17 +103,6 @@ Console.ResetColor();
     {
         obstaculo.CriarObstaculo();
         obstaculo.Atualizar();
-
-        foreach (var estrela in estrelas)
-{
-    estrela.Linha++;
-
-    if (estrela.Linha > 12)
-    {
-        estrela.Linha = 0;
-        estrela.Coluna = random.Next(2, 35);
-    }
-}
 
         VerificarColisao();
 
@@ -195,7 +160,7 @@ void GameOver()
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
 
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                            ║");
+    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                           ║");
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("║                                            ║");
