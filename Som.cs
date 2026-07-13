@@ -1,29 +1,30 @@
-using System;
-using System.Runtime.InteropServices;
+using NAudio.Wave;
 
 public static class Som
 {
-    [DllImport("winmm.dll")]
-    private static extern bool PlaySound(
-        string? pszSound,
-        IntPtr hmod,
-        uint fdwSound);
-
-    private const uint SND_ASYNC = 0x0001;
-    private const uint SND_LOOP = 0x0008;
-    private const uint SND_FILENAME = 0x00020000;
+    private static WaveOutEvent? musicaSaida;
+    private static AudioFileReader? musica;
 
     public static void Iniciar()
     {
-        PlaySound(
-            @"Assets\musicadefundo.wav",
-            IntPtr.Zero,
-            SND_ASYNC | SND_LOOP | SND_FILENAME);
+        if (musicaSaida != null)
+            return;
+
+        musica = new AudioFileReader(@"Assets\musicadefundo.wav");
+        musicaSaida = new WaveOutEvent();
+
+        musicaSaida.Init(new LoopStream(musica));
+        musicaSaida.Play();
     }
 
     public static void Parar()
     {
-        PlaySound(null, IntPtr.Zero, 0);
+        musicaSaida?.Stop();
+        musicaSaida?.Dispose();
+        musica?.Dispose();
+
+        musicaSaida = null;
+        musica = null;
     }
 
     public static void TocarColisao(int danosRecebidos)
@@ -33,10 +34,6 @@ public static class Som
         switch (danosRecebidos)
         {
             case 1:
-                arquivo = @"Assets\vida3.wav";
-                break;
-
-            case 2:
                 arquivo = @"Assets\vida2.wav";
                 break;
 
@@ -45,10 +42,16 @@ public static class Som
                 break;
         }
 
-        // Toca o efeito sonoro
-        PlaySound(
-            arquivo,
-            IntPtr.Zero,
-            SND_ASYNC | SND_FILENAME);
+        var leitor = new AudioFileReader(arquivo);
+        var saida = new WaveOutEvent();
+
+        saida.Init(leitor);
+        saida.Play();
+
+        saida.PlaybackStopped += (s, e) =>
+        {
+            saida.Dispose();
+            leitor.Dispose();
+        };
     }
 }
