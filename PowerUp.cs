@@ -22,7 +22,7 @@ public class PowerUp
         if (random.Next(100) < 2) 
         {
             int pista = random.Next(0, 2);
-            int tipo = 0;
+            int tipo = random.Next(0, 2);
 
             PowerUps.Add((0, pista, tipo));
         }
@@ -51,7 +51,16 @@ public class PowerUp
             int x = power.Pista == 0 ? 8 : 26;
 
             Console.SetCursorPosition(x, power.Linha);
-            Console.Write("[+]");
+            switch (power.Tipo)
+            {
+                case 0:
+                Console.Write("[+]");
+                break;
+
+                case 1:
+                Console.Write("[S]");
+                break;
+            }
         }
 
         Console.ResetColor();

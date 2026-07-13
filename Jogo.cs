@@ -202,11 +202,19 @@ void VerificarPowerUp()
 
         if (p.Pista == foguete.Pista && p.Linha >= 14 && p.Linha <= 17)
         {
-            sistema.Vidas++;
+            switch (p.Tipo)
+            {
+                case 0:
+                    sistema.Vidas++;
+                    break;
+
+                case 1:
+                    sistema.EscudoAtivo = true;
+                    break;
+            }
 
             powerUp.PowerUps.RemoveAt(i);
         }
     }
 }
 }
-
