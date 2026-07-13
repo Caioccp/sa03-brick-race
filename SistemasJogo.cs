@@ -9,6 +9,7 @@ public class SistemaJogo
     public int Velocidade { get; set; }
     public int ObstaculosDesviados { get; set; }
     public int DanosRecebidos { get; set; }
+    public bool EscudoAtivo { get; set; }
 
     public char[,] Pista = new char[20, 35];
 
@@ -29,8 +30,8 @@ public class SistemaJogo
         Velocidade = 80;
         ObstaculosDesviados = 0;
         DanosRecebidos = 0;
-
         nivelAnterior = 1;
+        EscudoAtivo = false;
 
         for (int linha = 0; linha < 20; linha++)
         {
