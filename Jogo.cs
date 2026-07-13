@@ -125,6 +125,7 @@ public void Iniciar()
         powerUp.Atualizar();
 
         VerificarColisao();
+        VerificarPowerUp();
 
         sistema.AtualizarNivel();
         sistema.AtualizarVelocidade();
@@ -191,6 +192,21 @@ void GameOver()
     Console.ResetColor();
 
     Console.ReadKey();
+}
+
+void VerificarPowerUp()
+{
+    for (int i = powerUp.PowerUps.Count - 1; i >= 0; i--)
+    {
+        var p = powerUp.PowerUps[i];
+
+        if (p.Pista == foguete.Pista && p.Linha >= 14 && p.Linha <= 17)
+        {
+            sistema.Vidas++;
+
+            powerUp.PowerUps.RemoveAt(i);
+        }
+    }
 }
 }
 
