@@ -10,7 +10,7 @@ public class SistemaJogo
     public int ObstaculosDesviados { get; set; }
     public int DanosRecebidos { get; set; }
 
-    public char[,] Pista = new char[13, 35];
+    public char[,] Pista = new char[20, 35];
 
     public static bool ExisteResultado = false;
 
@@ -32,7 +32,7 @@ public class SistemaJogo
 
         nivelAnterior = 1;
 
-        for (int linha = 0; linha < 13; linha++)
+        for (int linha = 0; linha < 20; linha++)
         {
             for (int coluna = 0; coluna < 35; coluna++)
             {
