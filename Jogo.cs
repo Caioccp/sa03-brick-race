@@ -13,6 +13,8 @@ public class Jogo
 
     Obstaculo obstaculo = new Obstaculo(30);
 
+    PowerUp powerUp = new PowerUp(30);
+
 public void Iniciar()
 {
     Som.Iniciar();
@@ -98,6 +100,7 @@ public void Iniciar()
 
     foguete.Desenhar();
     obstaculo.Desenhar();
+    powerUp.Desenhar();
 }
 
     void LerTeclado()
@@ -117,6 +120,9 @@ public void Iniciar()
     {
         obstaculo.CriarObstaculo();
         obstaculo.Atualizar();
+
+        powerUp.CriarPowerUp();
+        powerUp.Atualizar();
 
         VerificarColisao();
 
