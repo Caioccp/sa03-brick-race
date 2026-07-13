@@ -62,6 +62,9 @@ public void Iniciar()
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
 
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("RECORDE : " + SistemaJogo.Recorde.ToString("D6"));
+
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
 
@@ -153,6 +156,9 @@ void GameOver()
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                        ║");
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("║                                            ║");
