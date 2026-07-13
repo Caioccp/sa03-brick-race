@@ -57,7 +57,21 @@ public void Iniciar()
     Console.WriteLine();
 
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("VIDAS   : " + sistema.Vidas);
+    Console.Write("VIDAS   : ");
+
+    for (int i = 0; i < sistema.Vidas; i++)
+    {
+        Console.Write("♥ ");
+    }
+
+    for (int i = sistema.Vidas; i < 3; i++)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write("♡ ");
+        Console.ForegroundColor = ConsoleColor.Red;
+    }
+
+    Console.WriteLine();
 
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
