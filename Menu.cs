@@ -127,7 +127,10 @@ public class Menu
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"Obstáculos.......: {SistemaJogo.UltimosObstaculos}");
-            }
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"Recorde..........: {SistemaJogo.Recorde}");
+    }
 
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine();

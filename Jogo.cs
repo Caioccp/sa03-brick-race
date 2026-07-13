@@ -33,7 +33,7 @@ public void Iniciar()
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("================================================");
-    Console.WriteLine("                 BRICK RACE");
+    Console.WriteLine("                 SPACE RUN");
     Console.WriteLine("================================================");
     Console.ResetColor();
 
@@ -69,7 +69,7 @@ public void Iniciar()
     Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
 
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("VELOC.  : " + sistema.Velocidade + " ms");
+    Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
 
     Console.ResetColor();
 
@@ -158,6 +158,9 @@ void GameOver()
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                           ║");
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("║                                            ║");
