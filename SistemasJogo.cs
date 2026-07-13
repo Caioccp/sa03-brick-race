@@ -103,22 +103,32 @@ public class SistemaJogo
 }
 
     public void AtualizarVelocidade()
+{
+    switch (Nivel)
     {
-        switch (Nivel)
-        {
-            case 1: Velocidade = 150; break;
-            case 2: Velocidade = 140; break;
-            case 3: Velocidade = 130; break;
-            case 4: Velocidade = 120; break;
-            case 5: Velocidade = 110; break;
-            case 6: Velocidade = 100; break;
-            case 7: Velocidade = 90; break;
-            case 8: Velocidade = 80; break;
-            case 9: Velocidade = 70; break;
-            case 10: Velocidade = 60; break;
-            default: Velocidade = 50; break;
-        }
+        case 1: Velocidade = 150; break;
+        case 2: Velocidade = 140; break;
+        case 3: Velocidade = 130; break;
+        case 4: Velocidade = 120; break;
+        case 5: Velocidade = 110; break;
+        case 6: Velocidade = 100; break;
+        case 7: Velocidade = 90; break;
+        case 8: Velocidade = 80; break;
+        case 9: Velocidade = 70; break;
+        case 10: Velocidade = 60; break;
+        case 11: Velocidade = 50; break;
+        case 12: Velocidade = 40; break;
+        case 13: Velocidade = 30; break;
+        case 14: Velocidade = 20; break;
+        case 15: Velocidade = 10; break;
+        case 16: Velocidade = 10; break;
+        case 17: Velocidade = 10; break;
+        case 18: Velocidade = 10; break;
+        case 19: Velocidade = 10; break;
+        case 20: Velocidade = 10; break;
+        default: Velocidade = 10; break;
     }
+}
 
     public void SalvarResultado()
     {
