@@ -5,8 +5,10 @@ public class SistemaJogo
     public int Vidas { get; set; }
     public int Pontos { get; set; }
     public int Nivel { get; set; }
+
     public int Velocidade { get; set; }
     public int ObstaculosDesviados { get; set; }
+    public int DanosRecebidos { get; set; }
 
     public char[,] Pista = new char[13, 35];
 
@@ -15,8 +17,8 @@ public class SistemaJogo
     public static int UltimaPontuacao;
     public static int UltimoNivel;
     public static int UltimosObstaculos;
-   public static int Recorde = 0;
-   
+    public static int Recorde = 0;
+
     private int nivelAnterior;
 
     public SistemaJogo()
@@ -26,6 +28,8 @@ public class SistemaJogo
         Nivel = 1;
         Velocidade = 80;
         ObstaculosDesviados = 0;
+        DanosRecebidos = 0;
+
         nivelAnterior = 1;
 
         for (int linha = 0; linha < 13; linha++)
@@ -42,6 +46,7 @@ public class SistemaJogo
         if (Vidas > 0)
         {
             Vidas--;
+            DanosRecebidos++;
         }
     }
 
@@ -96,17 +101,15 @@ public class SistemaJogo
     }
 
     public void SalvarResultado()
-{
-    UltimaPontuacao = Pontos;
-    UltimoNivel = Nivel;
-    UltimosObstaculos = ObstaculosDesviados;
-    ExisteResultado = true;
+    {
+        UltimaPontuacao = Pontos;
+        UltimoNivel = Nivel;
+        UltimosObstaculos = ObstaculosDesviados;
+        ExisteResultado = true;
 
-    if (Pontos > Recorde)
+        if (Pontos > Recorde)
         {
             Recorde = Pontos;
-        }  
-
-        Console.WriteLine($"TESTE RECORDE: {Recorde}");
-}
+        }
+    }
 }

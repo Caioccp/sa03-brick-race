@@ -120,6 +120,8 @@ public void Iniciar()
         {
             sistema.PerderVida();
 
+            Som.TocarColisao(sistema.DanosRecebidos);
+
             obstaculo.Obstaculos.RemoveAt(i);
 
             if (sistema.Vidas <= 0)
