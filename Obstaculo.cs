@@ -20,7 +20,7 @@ public class Obstaculo
     {
         foreach (var obstaculo in Obstaculos)
         {
-            if (obstaculo.Linha < 8)
+            if (obstaculo.Linha < 11)
                 return;
         }
 
