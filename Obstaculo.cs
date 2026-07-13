@@ -55,7 +55,7 @@ ultimaPista = pista;
 
         if (espaco > 5)
         {
-            Obstaculos.Add((0, pista, tipo));
+            Obstaculos.Add((3, pista, tipo));
         }
     }
 
