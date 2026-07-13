@@ -159,6 +159,9 @@ void GameOver()
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
 
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                        ║");
+
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("║                                            ║");
     Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
