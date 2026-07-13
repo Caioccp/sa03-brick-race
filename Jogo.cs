@@ -69,7 +69,7 @@ public void Iniciar()
     Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
 
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("VELOC.  : " + sistema.Velocidade + " ms");
+    Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
 
     Console.ResetColor();
 
