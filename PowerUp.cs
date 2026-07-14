@@ -39,7 +39,7 @@ public class PowerUp
             );
         }
 
-        PowerUps.RemoveAll(p => p.Linha > alturaTela);
+        PowerUps.RemoveAll(p => p.Linha > 18);
     }
 
     public void Desenhar()
@@ -54,11 +54,11 @@ public class PowerUp
             switch (power.Tipo)
             {
                 case 0:
-                Console.Write("[+]");
+                Console.Write("[♥]");
                 break;
 
                 case 1:
-                Console.Write("[S]");
+                Console.Write("[🛡️ ]");
                 break;
             }
         }
