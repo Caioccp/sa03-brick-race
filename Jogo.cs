@@ -59,19 +59,15 @@ public void Iniciar()
     Console.WriteLine();
 
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.Write("VIDAS   : ");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write("VIDAS: ");
 
     for (int i = 0; i < sistema.Vidas; i++)
     {
         Console.Write("♥ ");
     }
 
-    for (int i = sistema.Vidas; i < 3; i++)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.Write("♡ ");
-        Console.ForegroundColor = ConsoleColor.Red;
-    }
+    Console.ResetColor();   
 
     Console.WriteLine();
 
@@ -86,6 +82,8 @@ public void Iniciar()
 
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
+
+    MostrarBuffs();
 
     Console.ResetColor();
 
@@ -215,9 +213,6 @@ void VerificarPowerUp()
                 case 0:
                     sistema.Vidas++;
 
-                    if (sistema.Vidas > 3)
-                        sistema.Vidas = 3;
-
                     Som.TocarPowerUp();
                     break;
 
@@ -239,6 +234,28 @@ void VerificarPowerUp()
 
             powerUp.PowerUps.RemoveAt(i);
         }
+    }
+}
+
+void MostrarBuffs()
+{
+    Console.WriteLine();
+
+    Console.WriteLine("BUFFS:");
+
+    if (sistema.EscudoAtivo)
+    {
+        Console.WriteLine("🛡 Escudo");
+    }
+
+    if (sistema.PontosDobrados)
+    {
+        Console.WriteLine($"💎 x2 ({sistema.TempoPontosDobrados / 10}s)");
+    }
+
+    if (!sistema.EscudoAtivo && !sistema.PontosDobrados)
+    {
+        Console.WriteLine("Nenhum");
     }
 }
 }
