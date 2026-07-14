@@ -80,4 +80,8 @@ public static class Som
             sons.Remove(saida);
         };
     }
+    public static void TocarPontos()
+{
+    TocarEfeito(@"Assets\pontos.wav");
+}
 }

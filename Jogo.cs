@@ -189,7 +189,7 @@ void GameOver()
     Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
 
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                           ║");
+    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                            ║");
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("║                                            ║");
@@ -229,12 +229,12 @@ void VerificarPowerUp()
                     break;
 
 
-                case 2:
-                    sistema.PontosDobrados = true;
+            case 2:
+                sistema.PontosDobrados = true;
 
-                    Som.TocarPowerUp();
-                    sistema.TempoPontosDobrados = 100;
-                    break;
+                Som.TocarPontos();
+
+                break;
             }
 
             powerUp.PowerUps.RemoveAt(i);
