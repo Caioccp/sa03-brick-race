@@ -155,7 +155,7 @@ public class Menu
 
 
     // Método responsável por mostrar as regras do jogo.
-        // Método responsável por exibir as instruções do jogo.
+    // Método responsável por exibir as instruções do jogo.
     void MostrarInstrucoes()
     {
         // Limpa a tela.

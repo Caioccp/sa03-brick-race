@@ -149,9 +149,9 @@ public class PowerUp
 
                 // Poder de escudo.
                 case 1:
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("[🛡]");
-                break;
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("[🛡]");
+                    break;
 
                     Console.ForegroundColor = ConsoleColor.Blue;
 

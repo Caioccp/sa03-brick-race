@@ -99,7 +99,7 @@ public class SistemaJogo
         ObstaculosDesviados++;
     }
 
-        // Atualiza o nível do jogador de acordo com a pontuação.
+    // Atualiza o nível do jogador de acordo com a pontuação.
     public void AtualizarNivel()
     {
         if (Pontos >= 1900)

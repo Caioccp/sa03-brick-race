@@ -95,6 +95,7 @@ public class Jogo
 
         // Exibe a quantidade de vidas.
         Console.ForegroundColor = ConsoleColor.Red;
+        Console.SetCursorPosition(42, 5);
         Console.Write("VIDAS: ");
 
         // Desenha um coração para cada vida.
@@ -109,18 +110,22 @@ public class Jogo
 
         // Exibe a pontuação atual.
         Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(42, 6);
         Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
 
         // Exibe o recorde.
         Console.ForegroundColor = ConsoleColor.Blue;
+                Console.SetCursorPosition(42, 7);
         Console.WriteLine("RECORDE : " + SistemaJogo.Recorde.ToString("D6"));
 
         // Exibe o nível atual.
         Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.SetCursorPosition(42, 8);
         Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
 
         // Exibe a velocidade do jogo.
         Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(42, 9);
         Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
 
         // Mostra os buffs ativos.
@@ -132,10 +137,13 @@ public class Jogo
 
         // Exibe os controles.
         Console.ForegroundColor = ConsoleColor.White;
-
+        Console.SetCursorPosition(42, 17);
         Console.WriteLine("CONTROLES");
+        Console.SetCursorPosition(42, 18);
         Console.WriteLine("A ou ← = Esquerda");
+        Console.SetCursorPosition(42, 19);
         Console.WriteLine("D ou → = Direita");
+        Console.SetCursorPosition(42, 20);
         Console.WriteLine("ESC = Sair");
 
         Console.ResetColor();
@@ -146,7 +154,7 @@ public class Jogo
         powerUp.Desenhar();
     }
 
-        // Método responsável por ler as teclas pressionadas pelo jogador.
+    // Método responsável por ler as teclas pressionadas pelo jogador.
     void LerTeclado()
     {
         // Verifica se existe alguma tecla pressionada.
@@ -241,7 +249,7 @@ public class Jogo
                         rodando = false;
 
                         return;
-                        }
+                    }
                     else
                     {
                         // Ainda possui vidas, então toca o som de colisão.
@@ -261,35 +269,35 @@ public class Jogo
             }
         }
     }
-        void TelaPerdeu()
-{
-    // Para a música de fundo
-    Som.Parar();
+    void TelaPerdeu()
+    {
+        // Para a música de fundo
+        Som.Parar();
 
-    // Limpa a tela
-    Console.Clear();
+        // Limpa a tela
+        Console.Clear();
 
-    Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.Red;
 
-    Console.WriteLine();
-    Console.WriteLine("=======================================");
-    Console.WriteLine("            VOCÊ PERDEU :(");
-    Console.WriteLine("=======================================");
+        Console.WriteLine();
+        Console.WriteLine("=======================================");
+        Console.WriteLine("            VOCÊ PERDEU :(");
+        Console.WriteLine("=======================================");
 
-    Console.ResetColor();
+        Console.ResetColor();
 
-    // Toca o som de derrota
-    Som.TocarGameOver();
+        // Toca o som de derrota
+        Som.TocarGameOver();
 
-    // Espera o som terminar
-    Thread.Sleep(3000);
+        // Espera o som terminar
+        Thread.Sleep(3000);
 
-    // Vai para a tela de Game Over
-    GameOver();
-}
+        // Vai para a tela de Game Over
+        GameOver();
+    }
 
 
-        // Método responsável por exibir a tela de fim de jogo.
+    // Método responsável por exibir a tela de fim de jogo.
     void GameOver()
     {
         // Para a música de fundo.
@@ -387,25 +395,32 @@ public class Jogo
     // Exibe os buffs ativos na tela.
     void MostrarBuffs()
     {
-        Console.WriteLine();
+        Console.WriteLine("");
+        Console.SetCursorPosition(42, 11);
         Console.WriteLine("BUFFS:");
 
         // Escudo ativo.
         if (sistema.EscudoAtivo)
         {
+            Console.SetCursorPosition(42, 12);
             Console.WriteLine("🛡 Escudo");
         }
 
         // Pontos dobrados ativos.
         if (sistema.PontosDobrados)
         {
+            Console.SetCursorPosition(42, 12);
             Console.WriteLine($"💎 x2 ({sistema.TempoPontosDobrados / 10}s)");
         }
 
         // Nenhum buff ativo.
         if (!sistema.EscudoAtivo && !sistema.PontosDobrados)
         {
+            Console.SetCursorPosition(42, 12);
             Console.WriteLine("Nenhum ativo no momento.");
+
+            Console.SetCursorPosition(42, 14);
+            Console.WriteLine("Boa Sorte!");
         }
     }
 }
