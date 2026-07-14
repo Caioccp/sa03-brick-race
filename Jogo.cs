@@ -19,7 +19,7 @@ public class Jogo
     Foguete foguete = new Foguete();
 
     // Gerencia os obstáculos.
-    Obstaculo obstaculo = new Obstaculo(30);
+    Obstaculo obstaculo = new Obstaculo(40);
 
     // Gerencia os poderes.
     PowerUp powerUp = new PowerUp(30);
@@ -79,7 +79,7 @@ public class Jogo
         Console.WriteLine("+-----------------------------------+");
 
         // Desenha o interior da pista.
-        for (int i = 0; i < 13; i++)
+        for (int i = 0; i < 20; i++)
         {
             Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
             Console.WriteLine("|                 |                 |");
@@ -221,8 +221,8 @@ public class Jogo
             // Verifica se o obstáculo está na mesma pista
             // e na posição do foguete.
             if (o.Pista == foguete.Pista &&
-                o.Linha >= 14 &&
-                o.Linha <= 17)
+                o.Linha >= 21 &&
+                o.Linha <= 24)
             {
                 // Se o escudo estiver ativo,
                 // ele protege o jogador.
@@ -260,7 +260,7 @@ public class Jogo
 
             // Caso o obstáculo tenha saído da tela,
             // o jogador ganha pontos.
-            else if (o.Linha > 18)
+            else if (o.Linha > 24)
             {
                 sistema.SomarPontos();
 
@@ -354,8 +354,8 @@ public class Jogo
             // Verifica se o poder está na mesma pista
             // e na posição do foguete.
             if (p.Pista == foguete.Pista &&
-                p.Linha >= 14 &&
-                p.Linha <= 17)
+                p.Linha >= 21 &&
+                p.Linha <= 24)
             {
                 switch (p.Tipo)
                 {

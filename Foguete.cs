@@ -61,7 +61,7 @@ public class Foguete
         int coluna;
 
         // Define a linha onde o foguete aparece.
-        int linha = 14;
+        int linha = 21;
 
 
         // Escolhe a coluna dependendo da pista.

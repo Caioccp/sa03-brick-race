@@ -101,7 +101,7 @@ public class PowerUp
 
 
         // Remove poderes que passaram do limite da tela.
-        PowerUps.RemoveAll(p => p.Linha > 18);
+        PowerUps.RemoveAll(p => p.Linha > 24);
     }
 
 
