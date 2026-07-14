@@ -155,9 +155,8 @@ public class PowerUp
 
 
 
-
                 // Poder de pontos dobrados.
-                case 3:
+                case 2:
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
 
