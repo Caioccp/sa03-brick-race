@@ -153,17 +153,11 @@ public class PowerUp
                     Console.Write("[🛡]");
                     break;
 
-                    Console.ForegroundColor = ConsoleColor.Blue;
-
-                    // Representado por um escudo.
-                    Console.Write("[🛡️ ]");
-
-                    break;
 
 
 
                 // Poder de pontos dobrados.
-                case 2:
+                case 3:
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
 
