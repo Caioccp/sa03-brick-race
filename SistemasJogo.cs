@@ -11,6 +11,7 @@ public class SistemaJogo
     public int DanosRecebidos { get; set; }
     public bool EscudoAtivo { get; set; }
     public bool PontosDobrados { get; set; }
+    public int TempoPontosDobrados { get; set; }
 
     public char[,] Pista = new char[20, 35];
 
@@ -34,6 +35,7 @@ public class SistemaJogo
         nivelAnterior = 1;
         EscudoAtivo = false;
         PontosDobrados = false;
+        TempoPontosDobrados = 0;
 
         for (int linha = 0; linha < 20; linha++)
         {
@@ -55,10 +57,17 @@ public class SistemaJogo
 
     public void SomarPontos()
     {
-        Pontos += 10;
+        if (PontosDobrados)
+        {
+            Pontos += 20;
+        }
+        else
+        {
+            Pontos += 10;
+        }
+
         ObstaculosDesviados++;
     }
-
     public void AtualizarNivel()
 {
     if (Pontos >= 1900)
@@ -143,6 +152,19 @@ public class SistemaJogo
         if (Pontos > Recorde)
         {
             Recorde = Pontos;
+        }
+    }
+
+    public void AtualizarBuffs()
+    {
+        if (PontosDobrados)
+        {
+            TempoPontosDobrados--;
+
+            if (TempoPontosDobrados <= 0)
+            {
+                PontosDobrados = false;
+            }
         }
     }
 }

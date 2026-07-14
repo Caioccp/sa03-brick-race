@@ -127,6 +127,7 @@ public void Iniciar()
         VerificarColisao();
         VerificarPowerUp();
 
+        sistema.AtualizarBuffs();
         sistema.AtualizarNivel();
         sistema.AtualizarVelocidade();
     }
@@ -230,8 +231,12 @@ void VerificarPowerUp()
 
                 case 2:
                     sistema.PontosDobrados = true;
+<<<<<<< HEAD
 
                     Som.TocarPowerUp();
+=======
+                    sistema.TempoPontosDobrados = 100;
+>>>>>>> 9ec2b1c41052a21181877c2480a9598a979b7b87
                     break;
             }
 
