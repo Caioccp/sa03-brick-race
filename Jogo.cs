@@ -376,7 +376,7 @@ public class Jogo
         // Nenhum buff ativo.
         if (!sistema.EscudoAtivo && !sistema.PontosDobrados)
         {
-            Console.WriteLine("Nenhum");
+            Console.WriteLine("Nenhum ativo no momento.");
         }
     }
 }

@@ -124,7 +124,7 @@ public static class Som
     // Toca o som de pegar um PowerUp.
     public static void TocarPowerUp()
     {
-        TocarEfeito(@"Assets\escudo.wav");
+        TocarEfeito(@"Assets\recuperarVida.wav");
     }
 
 
