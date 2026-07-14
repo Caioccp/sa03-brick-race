@@ -1,9 +1,14 @@
+using System.Collections.Generic;
 using NAudio.Wave;
 
 public static class Som
 {
     private static WaveOutEvent? musicaSaida;
     private static AudioFileReader? musica;
+
+    // Guarda os sons para eles não serem apagados antes de terminar
+    private static List<WaveOutEvent> sons = new List<WaveOutEvent>();
+
 
     public static void Iniciar()
     {
@@ -17,6 +22,7 @@ public static class Som
         musicaSaida.Play();
     }
 
+
     public static void Parar()
     {
         musicaSaida?.Stop();
@@ -26,6 +32,7 @@ public static class Som
         musicaSaida = null;
         musica = null;
     }
+
 
     public static void TocarColisao(int danosRecebidos)
     {
@@ -42,16 +49,35 @@ public static class Som
                 break;
         }
 
+        TocarEfeito(arquivo);
+    }
+        public static void TocarPowerUp()
+        {
+            TocarEfeito(@"Assets\escudo.wav");
+        }
+    public static void TocarEscudo()
+    {
+        TocarEfeito(@"Assets\escudo.wav");
+    }
+
+
+    private static void TocarEfeito(string arquivo)
+    {
         var leitor = new AudioFileReader(arquivo);
         var saida = new WaveOutEvent();
 
         saida.Init(leitor);
+
+        sons.Add(saida);
+
         saida.Play();
 
         saida.PlaybackStopped += (s, e) =>
         {
             saida.Dispose();
             leitor.Dispose();
+
+            sons.Remove(saida);
         };
     }
 }

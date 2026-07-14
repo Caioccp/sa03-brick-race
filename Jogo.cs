@@ -213,13 +213,25 @@ void VerificarPowerUp()
             {
                 case 0:
                     sistema.Vidas++;
+
+                    if (sistema.Vidas > 3)
+                        sistema.Vidas = 3;
+
+                    Som.TocarPowerUp();
                     break;
+
 
                 case 1:
                     sistema.EscudoAtivo = true;
+
+                    Som.TocarEscudo();
                     break;
+
+
                 case 2:
                     sistema.PontosDobrados = true;
+
+                    Som.TocarPowerUp();
                     break;
             }
 
