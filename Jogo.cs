@@ -438,7 +438,7 @@ public class Jogo
         if (sistema.PontosDobrados)
         {
             Console.SetCursorPosition(42, 12);
-            Console.WriteLine($"💎 x2 ({sistema.TempoPontosDobrados / 10}s)");
+            Console.WriteLine($"$x2 ({sistema.TempoPontosDobrados / 10}s)");
         }
 
         // Nenhum buff ativo.
