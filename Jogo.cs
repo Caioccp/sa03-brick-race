@@ -1,261 +1,382 @@
 using System;
 using System.Threading;
 
+// Classe responsável por controlar toda a partida.
+// Ela desenha a tela, atualiza os objetos, verifica colisões
+// e controla o início e o fim do jogo.
 public class Jogo
 {
+    // Controla se o jogo continua em execução.
     bool rodando = true;
 
+    // Define a posição horizontal onde a pista começa.
     int inicioDaPista = 1;
 
+    // Sistema responsável por controlar vidas, pontos, nível e buffs.
     SistemaJogo sistema = new SistemaJogo();
 
+    // Objeto do jogador.
     Foguete foguete = new Foguete();
 
+    // Gerencia os obstáculos.
     Obstaculo obstaculo = new Obstaculo(30);
 
+    // Gerencia os poderes.
     PowerUp powerUp = new PowerUp(30);
 
-public void Iniciar()
-{
-    Som.Iniciar();
 
-    while (rodando)
+
+    // Método responsável por iniciar a partida.
+    public void Iniciar()
     {
-        DesenharTela();
-        LerTeclado();
-        Atualizar();
+        // Inicia a música de fundo.
+        Som.Iniciar();
 
-        Thread.Sleep(sistema.Velocidade);
+        // Loop principal do jogo.
+        while (rodando)
+        {
+            // Desenha toda a tela.
+            DesenharTela();
+
+            // Lê as teclas pressionadas.
+            LerTeclado();
+
+            // Atualiza todos os elementos do jogo.
+            Atualizar();
+
+            // Controla a velocidade da partida.
+            Thread.Sleep(sistema.Velocidade);
+        }
+
+        // Para a música quando o jogo termina.
+        Som.Parar();
     }
-            Som.Parar();
-}
+
+
+
+    // Método responsável por desenhar todos os elementos na tela.
     void DesenharTela()
-{
-    Console.Clear();
-
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("================================================");
-    Console.WriteLine("                 SPACE RUN");
-    Console.WriteLine("================================================");
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-
-    Console.ForegroundColor = ConsoleColor.DarkYellow;
-    Console.WriteLine("+-----------------------------------+");
-
-    for (int i = 0; i < 13; i++)
     {
+        // Limpa o console.
+        Console.Clear();
+
+        // Desenha o título do jogo.
+        Console.ForegroundColor = ConsoleColor.Cyan;
+
+        Console.WriteLine("================================================");
+        Console.WriteLine("                 SPACE RUN");
+        Console.WriteLine("================================================");
+
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        // Posiciona o cursor no início da pista.
         Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-        Console.WriteLine("|                 |                 |");
+
+        // Desenha a borda superior da pista.
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("+-----------------------------------+");
+
+        // Desenha o interior da pista.
+        for (int i = 0; i < 13; i++)
+        {
+            Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+            Console.WriteLine("|                 |                 |");
+        }
+
+        // Desenha a borda inferior.
+        Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
+        Console.WriteLine("+-----------------------------------+");
+
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        // Exibe a quantidade de vidas.
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("VIDAS: ");
+
+        // Desenha um coração para cada vida.
+        for (int i = 0; i < sistema.Vidas; i++)
+        {
+            Console.Write("♥ ");
+        }
+
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        // Exibe a pontuação atual.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
+
+        // Exibe o recorde.
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("RECORDE : " + SistemaJogo.Recorde.ToString("D6"));
+
+        // Exibe o nível atual.
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
+
+        // Exibe a velocidade do jogo.
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
+
+        // Mostra os buffs ativos.
+        MostrarBuffs();
+
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        // Exibe os controles.
+        Console.ForegroundColor = ConsoleColor.White;
+
+        Console.WriteLine("CONTROLES");
+        Console.WriteLine("A ou ← = Esquerda");
+        Console.WriteLine("D ou → = Direita");
+        Console.WriteLine("ESC = Sair");
+
+        Console.ResetColor();
+
+        // Desenha todos os elementos do jogo.
+        foguete.Desenhar();
+        obstaculo.Desenhar();
+        powerUp.Desenhar();
     }
 
-    Console.SetCursorPosition(inicioDaPista, Console.CursorTop);
-    Console.WriteLine("+-----------------------------------+");
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.Write("VIDAS: ");
-
-    for (int i = 0; i < sistema.Vidas; i++)
-    {
-        Console.Write("♥ ");
-    }
-
-    Console.ResetColor();   
-
-    Console.WriteLine();
-
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("PONTOS  : " + sistema.Pontos.ToString("D6"));
-
-    Console.ForegroundColor = ConsoleColor.Blue;
-    Console.WriteLine("RECORDE : " + SistemaJogo.Recorde.ToString("D6"));
-
-    Console.ForegroundColor = ConsoleColor.Magenta;
-    Console.WriteLine("NIVEL   : " + sistema.Nivel.ToString("D2"));
-
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("VELOC.  : " + sistema.Velocidade + " m/s");
-
-    MostrarBuffs();
-
-    Console.ResetColor();
-
-    Console.WriteLine();
-
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("CONTROLES");
-    Console.WriteLine("A ou ← = Esquerda");
-    Console.WriteLine("D ou → = Direita");
-    Console.WriteLine("ESC = Sair");
-    Console.ResetColor();
-
-    foguete.Desenhar();
-    obstaculo.Desenhar();
-    powerUp.Desenhar();
-}
-
+        // Método responsável por ler as teclas pressionadas pelo jogador.
     void LerTeclado()
     {
+        // Verifica se existe alguma tecla pressionada.
         if (!Console.KeyAvailable)
             return;
 
+        // Lê a tecla sem exibi-la na tela.
         ConsoleKey tecla = Console.ReadKey(true).Key;
 
+        // Envia a tecla para o foguete decidir o movimento.
         foguete.LerTecla(tecla);
 
+        // Se o jogador apertar ESC, encerra a partida.
         if (tecla == ConsoleKey.Escape)
             rodando = false;
     }
 
+
+
+    // Método responsável por atualizar todos os elementos do jogo.
     void Atualizar()
     {
+        // Cria novos obstáculos.
         obstaculo.CriarObstaculo();
+
+        // Move os obstáculos.
         obstaculo.Atualizar();
 
+        // Cria novos poderes.
         powerUp.CriarPowerUp();
+
+        // Move os poderes.
         powerUp.Atualizar();
 
+        // Verifica colisões com obstáculos.
         VerificarColisao();
+
+        // Verifica se algum poder foi coletado.
         VerificarPowerUp();
 
+        // Atualiza o tempo restante dos buffs.
         sistema.AtualizarBuffs();
+
+        // Atualiza o nível do jogador.
         sistema.AtualizarNivel();
+
+        // Atualiza a velocidade conforme o nível.
         sistema.AtualizarVelocidade();
     }
 
+
+
+    // Método responsável por verificar colisões entre
+    // o foguete e os obstáculos.
     void VerificarColisao()
-{
-    for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
     {
-        var o = obstaculo.Obstaculos[i];
-
-        if (o.Pista == foguete.Pista && o.Linha >= 14 && o.Linha <= 17)
+        // Percorre todos os obstáculos de trás para frente.
+        // Isso evita erros ao remover itens da lista.
+        for (int i = obstaculo.Obstaculos.Count - 1; i >= 0; i--)
         {
-            if (sistema.EscudoAtivo)
+            // Guarda o obstáculo atual.
+            var o = obstaculo.Obstaculos[i];
+
+            // Verifica se o obstáculo está na mesma pista
+            // e na posição do foguete.
+            if (o.Pista == foguete.Pista &&
+                o.Linha >= 14 &&
+                o.Linha <= 17)
             {
-                sistema.EscudoAtivo = false;
+                // Se o escudo estiver ativo,
+                // ele protege o jogador.
+                if (sistema.EscudoAtivo)
+                {
+                    sistema.EscudoAtivo = false;
+                }
+                else
+                {
+                    // Caso contrário, perde uma vida.
+                    sistema.PerderVida();
+                }
+
+                // Reproduz o som da colisão.
+                Som.TocarColisao(sistema.DanosRecebidos);
+
+                // Remove o obstáculo atingido.
+                obstaculo.Obstaculos.RemoveAt(i);
+
+                // Verifica se acabaram as vidas.
+                if (sistema.Vidas <= 0)
+                {
+                    // Salva o resultado da partida.
+                    sistema.SalvarResultado();
+
+                    // Exibe a tela de Game Over.
+                    GameOver();
+
+                    // Encerra o jogo.
+                    rodando = false;
+                }
             }
-            else
+
+            // Caso o obstáculo tenha saído da tela,
+            // o jogador ganha pontos.
+            else if (o.Linha > 18)
             {
-                sistema.PerderVida();
-            }
+                sistema.SomarPontos();
 
-            Som.TocarColisao(sistema.DanosRecebidos);
-
-            obstaculo.Obstaculos.RemoveAt(i);
-
-            if (sistema.Vidas <= 0)
-            {
-                sistema.SalvarResultado();
-                GameOver();
-                rodando = false;
+                // Remove o obstáculo que saiu da pista.
+                obstaculo.Obstaculos.RemoveAt(i);
             }
         }
-        else if (o.Linha > 18)
-        {
-            sistema.SomarPontos();
-            obstaculo.Obstaculos.RemoveAt(i);
-        }
     }
-}
 
-void GameOver()
-{
-    Som.Parar();
-
-    Console.Clear();
-
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("╔════════════════════════════════════════════╗");
-    Console.WriteLine("║               FIM DE JOGO                  ║");
-    Console.WriteLine("╠════════════════════════════════════════════╣");
-
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine($"║ Pontuacao final: {sistema.Pontos:D6}                    ║");
-
-    Console.ForegroundColor = ConsoleColor.Magenta;
-    Console.WriteLine($"║ Nivel alcancado: {sistema.Nivel:D3}                       ║");
-
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine($"║ Obstaculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
-
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                            ║");
-
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("║                                            ║");
-    Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
-    Console.WriteLine("║ ao menu principal.                         ║");
-    Console.WriteLine("╚════════════════════════════════════════════╝");
-
-    Console.ResetColor();
-
-    Console.ReadKey();
-}
-
-void VerificarPowerUp()
-{
-    for (int i = powerUp.PowerUps.Count - 1; i >= 0; i--)
+        // Método responsável por exibir a tela de fim de jogo.
+    void GameOver()
     {
-        var p = powerUp.PowerUps[i];
+        // Para a música de fundo.
+        Som.Parar();
 
-        if (p.Pista == foguete.Pista && p.Linha >= 14 && p.Linha <= 17)
+        // Limpa a tela.
+        Console.Clear();
+
+        // Exibe o título.
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("╔════════════════════════════════════════════╗");
+        Console.WriteLine("║               FIM DE JOGO                  ║");
+        Console.WriteLine("╠════════════════════════════════════════════╣");
+
+        // Exibe a pontuação final.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"║ Pontuação final: {sistema.Pontos:D6}                    ║");
+
+        // Exibe o nível alcançado.
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine($"║ Nível alcançado: {sistema.Nivel:D3}                     ║");
+
+        // Exibe a quantidade de obstáculos desviados.
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"║ Obstáculos desviados: {sistema.ObstaculosDesviados:D3}              ║");
+
+        // Exibe o recorde.
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                        ║");
+
+        // Mensagem para voltar ao menu.
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("║                                            ║");
+        Console.WriteLine("║ Pressione qualquer tecla para voltar       ║");
+        Console.WriteLine("║ ao menu principal.                         ║");
+        Console.WriteLine("╚════════════════════════════════════════════╝");
+
+        Console.ResetColor();
+
+        // Aguarda o jogador pressionar uma tecla.
+        Console.ReadKey(true);
+    }
+
+
+
+    // Verifica se o jogador coletou algum PowerUp.
+    void VerificarPowerUp()
+    {
+        // Percorre a lista de trás para frente.
+        for (int i = powerUp.PowerUps.Count - 1; i >= 0; i--)
         {
-            switch (p.Tipo)
+            var p = powerUp.PowerUps[i];
+
+            // Verifica se o poder está na mesma pista
+            // e na posição do foguete.
+            if (p.Pista == foguete.Pista &&
+                p.Linha >= 14 &&
+                p.Linha <= 17)
             {
-                case 0:
-                    sistema.Vidas++;
+                switch (p.Tipo)
+                {
+                    // Vida extra.
+                    case 0:
+                        sistema.Vidas++;
 
-                    Som.TocarPowerUp();
-                    break;
+                        Som.TocarPowerUp();
+                        break;
 
+                    // Escudo.
+                    case 1:
+                        sistema.EscudoAtivo = true;
 
-                case 1:
-                    sistema.EscudoAtivo = true;
+                        Som.TocarEscudo();
+                        break;
 
-                    Som.TocarEscudo();
-                    break;
+                    // Pontos dobrados.
+                    case 2:
+                        sistema.PontosDobrados = true;
 
+                        // Duração do buff (10 segundos).
+                        sistema.TempoPontosDobrados = 100;
 
-            case 2:
-                sistema.PontosDobrados = true;
+                        Som.TocarPontos();
+                        break;
+                }
 
-                Som.TocarPontos();
-
-                break;
+                // Remove o PowerUp após ser coletado.
+                powerUp.PowerUps.RemoveAt(i);
             }
-
-            powerUp.PowerUps.RemoveAt(i);
         }
     }
-}
 
-void MostrarBuffs()
-{
-    Console.WriteLine();
 
-    Console.WriteLine("BUFFS:");
 
-    if (sistema.EscudoAtivo)
+    // Exibe os buffs ativos na tela.
+    void MostrarBuffs()
     {
-        Console.WriteLine("🛡 Escudo");
-    }
+        Console.WriteLine();
+        Console.WriteLine("BUFFS:");
 
-    if (sistema.PontosDobrados)
-    {
-        Console.WriteLine($"💎 x2 ({sistema.TempoPontosDobrados / 10}s)");
-    }
+        // Escudo ativo.
+        if (sistema.EscudoAtivo)
+        {
+            Console.WriteLine("🛡 Escudo");
+        }
 
-    if (!sistema.EscudoAtivo && !sistema.PontosDobrados)
-    {
-        Console.WriteLine("Nenhum");
+        // Pontos dobrados ativos.
+        if (sistema.PontosDobrados)
+        {
+            Console.WriteLine($"💎 x2 ({sistema.TempoPontosDobrados / 10}s)");
+        }
+
+        // Nenhum buff ativo.
+        if (!sistema.EscudoAtivo && !sistema.PontosDobrados)
+        {
+            Console.WriteLine("Nenhum");
+        }
     }
-}
 }
