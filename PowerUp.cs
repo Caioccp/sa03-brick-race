@@ -22,7 +22,7 @@ public class PowerUp
         if (random.Next(100) < 2) 
         {
             int pista = random.Next(0, 2);
-            int tipo = random.Next(0, 2);
+            int tipo = random.Next(0, 3);
 
             PowerUps.Add((0, pista, tipo));
         }
@@ -54,11 +54,18 @@ public class PowerUp
             switch (power.Tipo)
             {
                 case 0:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("[♥]");
                 break;
 
                 case 1:
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("[🛡️ ]");
+                break;
+
+                case 2:
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("[$]");
                 break;
             }
         }

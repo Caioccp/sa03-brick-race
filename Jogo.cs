@@ -218,6 +218,9 @@ void VerificarPowerUp()
                 case 1:
                     sistema.EscudoAtivo = true;
                     break;
+                case 2:
+                    sistema.PontosDobrados = true;
+                    break;
             }
 
             powerUp.PowerUps.RemoveAt(i);
