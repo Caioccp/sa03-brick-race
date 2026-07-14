@@ -139,7 +139,14 @@ public void Iniciar()
 
         if (o.Pista == foguete.Pista && o.Linha >= 14 && o.Linha <= 17)
         {
-            sistema.PerderVida();
+            if (sistema.EscudoAtivo)
+            {
+                sistema.EscudoAtivo = false;
+            }
+            else
+            {
+                sistema.PerderVida();
+            }
 
             Som.TocarColisao(sistema.DanosRecebidos);
 
