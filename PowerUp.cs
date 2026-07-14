@@ -60,7 +60,7 @@ public class PowerUp
 
                 case 1:
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("[🛡️ ]");
+                Console.Write("[🛡]");
                 break;
 
                 case 2:
