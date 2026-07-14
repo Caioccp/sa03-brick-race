@@ -1,203 +1,208 @@
 using System;
 
-
-// Classe responsável por controlar todos os dados da partida.
-// Guarda informações como:
-// - vidas do jogador
-// - pontuação
-// - nível
-// - recorde
-// - poderes ativos
+// Classe responsável por controlar todas as informações da partida.
 public class SistemaJogo
 {
-
-    // Quantidade de vidas atuais do jogador.
+    // Quantidade de vidas do jogador.
     public int Vidas { get; set; }
 
-
-    // Pontuação atual da partida.
+    // Pontuação atual.
     public int Pontos { get; set; }
 
-
-    // Nível atual do jogador.
+    // Nível atual.
     public int Nivel { get; set; }
 
-
-
-    // Tempo entre movimentos dos obstáculos.
-    // Quanto menor o valor, mais rápido o jogo fica.
+    // Velocidade do jogo.
     public int Velocidade { get; set; }
 
-
-
-    // Quantidade de obstáculos que o jogador conseguiu desviar.
+    // Quantidade de obstáculos desviados.
     public int ObstaculosDesviados { get; set; }
 
-
-
-    // Quantidade de vezes que o jogador sofreu dano.
+    // Quantidade de danos recebidos.
     public int DanosRecebidos { get; set; }
 
-
-
     // Indica se o escudo está ativo.
-    // true = protegido
-    // false = sem escudo
     public bool EscudoAtivo { get; set; }
 
-
-
-    // Indica se o bônus de pontos está ativo.
-    // true = ganha pontos dobrados
-    // false = pontuação normal
+    // Indica se os pontos dobrados estão ativos.
     public bool PontosDobrados { get; set; }
 
-
-
-    // Controla quanto tempo falta para acabar o bônus de pontos dobrados.
+    // Tempo restante do buff de pontos dobrados.
     public int TempoPontosDobrados { get; set; }
 
-
-
-    // Matriz que representa a pista do jogo.
-    // Possui 20 linhas e 35 colunas.
+    // Matriz utilizada para representar a pista.
     public char[,] Pista = new char[20, 35];
 
-
-
-    // Informa se existe algum resultado salvo.
+    // Informa se já existe uma partida salva.
     public static bool ExisteResultado = false;
 
-
-
-    // Guarda a pontuação da última partida.
+    // Dados da última partida.
     public static int UltimaPontuacao;
-
-
-    // Guarda o nível alcançado na última partida.
     public static int UltimoNivel;
-
-
-    // Guarda a quantidade de obstáculos desviados na última partida.
     public static int UltimosObstaculos;
 
-
-    // Guarda o maior recorde conseguido.
+    // Melhor pontuação do jogo.
     public static int Recorde = 0;
 
-
-
     // Guarda o nível anterior.
-    // Usado para controlar mudanças de nível.
     private int nivelAnterior;
 
-
-
-
-
     // Construtor da classe.
-    // Define os valores iniciais de uma nova partida.
     public SistemaJogo()
     {
-
-        // O jogador começa com 3 vidas.
+        // Valores iniciais da partida.
         Vidas = 3;
-
-
-        // A pontuação começa zerada.
         Pontos = 0;
-
-
-        // O jogo começa no nível 1.
         Nivel = 1;
-
-
-        // Define a velocidade inicial.
         Velocidade = 80;
-
-
-        // Nenhum obstáculo foi desviado no início.
         ObstaculosDesviados = 0;
-
-
-        // Nenhum dano recebido no início.
         DanosRecebidos = 0;
 
-
-        // Salva o nível inicial.
         nivelAnterior = 1;
 
-
-        // O escudo começa desligado.
         EscudoAtivo = false;
-
-
-        // O bônus de pontos começa desligado.
         PontosDobrados = false;
-
-
-        // Tempo do bônus começa zerado.
         TempoPontosDobrados = 0;
 
-
-
-        // Percorre todas as posições da matriz da pista.
+        // Preenche toda a pista com espaços vazios.
         for (int linha = 0; linha < 20; linha++)
         {
             for (int coluna = 0; coluna < 35; coluna++)
             {
-
-                // Preenche todos os espaços vazios.
                 Pista[linha, coluna] = ' ';
             }
         }
     }
 
-
-
-
-
-    // Método chamado quando o jogador recebe dano.
+    // Remove uma vida do jogador.
     public void PerderVida()
     {
-
-        // Verifica se ainda existem vidas.
         if (Vidas > 0)
         {
-
-            // Remove uma vida.
             Vidas--;
-
-
-            // Soma um dano recebido.
             DanosRecebidos++;
         }
     }
 
-
-
-
-
-    // Método responsável por adicionar pontos ao jogador.
+    // Soma pontos ao jogador.
     public void SomarPontos()
     {
-
-        // Verifica se o bônus de pontos está ativo.
         if (PontosDobrados)
         {
-
-            // Com bônus ativo, ganha 20 pontos.
             Pontos += 20;
         }
         else
         {
-
-            // Sem bônus, ganha 10 pontos.
             Pontos += 10;
         }
 
-
-        // Aumenta a quantidade de obstáculos desviados.
         ObstaculosDesviados++;
+    }
+
+        // Atualiza o nível do jogador de acordo com a pontuação.
+    public void AtualizarNivel()
+    {
+        if (Pontos >= 1900)
+            Nivel = 20;
+        else if (Pontos >= 1800)
+            Nivel = 19;
+        else if (Pontos >= 1700)
+            Nivel = 18;
+        else if (Pontos >= 1600)
+            Nivel = 17;
+        else if (Pontos >= 1500)
+            Nivel = 16;
+        else if (Pontos >= 1400)
+            Nivel = 15;
+        else if (Pontos >= 1300)
+            Nivel = 14;
+        else if (Pontos >= 1200)
+            Nivel = 13;
+        else if (Pontos >= 1100)
+            Nivel = 12;
+        else if (Pontos >= 1000)
+            Nivel = 11;
+        else if (Pontos >= 900)
+            Nivel = 10;
+        else if (Pontos >= 800)
+            Nivel = 9;
+        else if (Pontos >= 700)
+            Nivel = 8;
+        else if (Pontos >= 600)
+            Nivel = 7;
+        else if (Pontos >= 500)
+            Nivel = 6;
+        else if (Pontos >= 400)
+            Nivel = 5;
+        else if (Pontos >= 300)
+            Nivel = 4;
+        else if (Pontos >= 200)
+            Nivel = 3;
+        else if (Pontos >= 100)
+            Nivel = 2;
+        else
+            Nivel = 1;
+
+        // Guarda o nível atual.
+        nivelAnterior = Nivel;
+    }
+
+    // Atualiza a velocidade do jogo conforme o nível.
+    public void AtualizarVelocidade()
+    {
+        switch (Nivel)
+        {
+            case 1: Velocidade = 150; break;
+            case 2: Velocidade = 140; break;
+            case 3: Velocidade = 130; break;
+            case 4: Velocidade = 120; break;
+            case 5: Velocidade = 110; break;
+            case 6: Velocidade = 100; break;
+            case 7: Velocidade = 90; break;
+            case 8: Velocidade = 80; break;
+            case 9: Velocidade = 70; break;
+            case 10: Velocidade = 60; break;
+            case 11: Velocidade = 50; break;
+            case 12: Velocidade = 40; break;
+            case 13: Velocidade = 30; break;
+            case 14: Velocidade = 20; break;
+            case 15: Velocidade = 10; break;
+            case 16: Velocidade = 10; break;
+            case 17: Velocidade = 10; break;
+            case 18: Velocidade = 10; break;
+            case 19: Velocidade = 10; break;
+            case 20: Velocidade = 10; break;
+            default: Velocidade = 10; break;
+        }
+    }
+
+    // Salva os dados da última partida.
+    public void SalvarResultado()
+    {
+        UltimaPontuacao = Pontos;
+        UltimoNivel = Nivel;
+        UltimosObstaculos = ObstaculosDesviados;
+
+        ExisteResultado = true;
+
+        // Atualiza o recorde caso a pontuação seja maior.
+        if (Pontos > Recorde)
+        {
+            Recorde = Pontos;
+        }
+    }
+
+    // Atualiza o tempo restante dos buffs.
+    public void AtualizarBuffs()
+    {
+        if (PontosDobrados)
+        {
+            TempoPontosDobrados--;
+
+            if (TempoPontosDobrados <= 0)
+            {
+                PontosDobrados = false;
+            }
+        }
     }
 }
