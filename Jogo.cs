@@ -24,6 +24,28 @@ public class Jogo
     // Gerencia os poderes.
     PowerUp powerUp = new PowerUp(30);
 
+    bool frase670 = false;
+    void VerificarFrase670()
+{
+    if (sistema.Pontos >= 670 && !frase670Mostrada)
+    {
+        frase670Mostrada = true;
+
+        Console.Clear();
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine();
+        Console.WriteLine("======================================");
+        Console.WriteLine("      PARABÉNS!");
+        Console.WriteLine("      Você farmou aura");
+        Console.WriteLine("======================================");
+        Console.ResetColor();
+
+        Thread.Sleep(3000);
+    }
+}
+
+
 
 
     // Método responsável por iniciar a partida.
@@ -203,6 +225,8 @@ public class Jogo
 
         // Atualiza a velocidade conforme o nível.
         sistema.AtualizarVelocidade();
+
+        VerificarFrase670();
     }
 
 
