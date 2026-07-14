@@ -165,14 +165,14 @@ public class SistemaJogo
             case 11: Velocidade = 50; break;
             case 12: Velocidade = 40; break;
             case 13: Velocidade = 30; break;
-            case 14: Velocidade = 20; break;
-            case 15: Velocidade = 10; break;
-            case 16: Velocidade = 10; break;
-            case 17: Velocidade = 10; break;
-            case 18: Velocidade = 10; break;
-            case 19: Velocidade = 10; break;
-            case 20: Velocidade = 10; break;
-            default: Velocidade = 10; break;
+            case 14: Velocidade = 30; break;
+            case 15: Velocidade = 30; break;
+            case 16: Velocidade = 30; break;
+            case 17: Velocidade = 30; break;
+            case 18: Velocidade = 30; break;
+            case 19: Velocidade = 30; break;
+            case 20: Velocidade = 30; break;
+            default: Velocidade = 30; break;
         }
     }
 
