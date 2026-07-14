@@ -164,15 +164,16 @@ public class Menu
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("===== INSTRUÇÕES =====");
 
-
-        // Texto explicando como jogar.
         Console.ForegroundColor = ConsoleColor.White;
-
         Console.WriteLine("- Desvie dos obstáculos.");
         Console.WriteLine("- Use A ou ← para mover para a esquerda.");
         Console.WriteLine("- Use D ou → para mover para a direita.");
         Console.WriteLine("- Você possui 3 vidas.");
         Console.WriteLine("- Ao perder todas as vidas, o jogo termina.");
+        Console.WriteLine("- Colete os Power Ups para obter vantagens.");
+        Console.WriteLine("- ♥ recupera uma vida.");
+        Console.WriteLine("- 🛡 ativa um escudo de proteção.");
+        Console.WriteLine("- $ dobra a pontuação.");
 
 
 
