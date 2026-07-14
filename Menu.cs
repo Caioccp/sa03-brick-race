@@ -155,35 +155,83 @@ public class Menu
 
 
     // Método responsável por mostrar as regras do jogo.
+        // Método responsável por exibir as instruções do jogo.
     void MostrarInstrucoes()
     {
+        // Limpa a tela.
         Console.Clear();
 
-
-        // Título das instruções.
+        // Exibe o título.
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("===== INSTRUÇÕES =====");
+        Console.WriteLine("=========== INSTRUÇÕES ===========\n");
+
+        // Exibe o objetivo do jogo.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("OBJETIVO:");
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("- Desvie dos obstáculos.");
-        Console.WriteLine("- Use A ou ← para mover para a esquerda.");
-        Console.WriteLine("- Use D ou → para mover para a direita.");
-        Console.WriteLine("- Você possui 3 vidas.");
-        Console.WriteLine("- Ao perder todas as vidas, o jogo termina.");
-        Console.WriteLine("- Colete os Power Ups para obter vantagens.");
-        Console.WriteLine("- ♥ recupera uma vida.");
-        Console.WriteLine("- 🛡 ativa um escudo de proteção.");
-        Console.WriteLine("- $ dobra a pontuação.");
+        Console.WriteLine("Desvie dos obstáculos trocando entre");
+        Console.WriteLine("a pista esquerda e a pista direita.");
+        Console.WriteLine();
 
+        // Exibe os controles do jogo.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("CONTROLES:");
 
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("A ou ←  = Mover para a esquerda");
+        Console.WriteLine("D ou →  = Mover para a direita");
+        Console.WriteLine("ESC     = Sair da partida");
+        Console.WriteLine();
 
-        // Mensagem para retornar ao menu.
+        // Exibe as regras da partida.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("REGRAS:");
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("• Você começa com 3 vidas.");
+        Console.WriteLine("• Cada obstáculo desviado vale pontos.");
+        Console.WriteLine("• A velocidade aumenta conforme o nível.");
+        Console.WriteLine("• Ao bater em um obstáculo, você perde uma vida.");
+        Console.WriteLine("• Quando as vidas chegam a zero, a partida termina.");
+        Console.WriteLine();
+
+        // Exibe os Power-Ups disponíveis.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("POWER-UPS:");
+
+        // Power-Up de vida.
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("\nPressione ENTER para voltar...");
+        Console.WriteLine("♥ Vida Extra");
 
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("  Adiciona +1 vida ao jogador.");
+        Console.WriteLine();
 
+        // Power-Up de escudo.
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("🛡 Escudo");
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("  Protege de uma colisão.");
+        Console.WriteLine();
+
+        // Power-Up de pontos dobrados.
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("$ Pontos em Dobro");
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("  Dobra os pontos ganhos por 10 segundos.");
+        Console.WriteLine();
+
+        // Mensagem para voltar ao menu.
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Pressione ENTER para voltar...");
+
+        // Restaura a cor padrão do console.
         Console.ResetColor();
 
+        // Aguarda o jogador pressionar uma tecla.
         Console.ReadKey(true);
     }
 
