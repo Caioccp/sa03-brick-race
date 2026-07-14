@@ -124,7 +124,7 @@ public static class Som
     // Toca o som de pegar um PowerUp.
     public static void TocarPowerUp()
     {
-        TocarEfeito(@"Assets\escudo.wav");
+        TocarEfeito(@"Assets\recuperarVida.wav");
     }
 
 
@@ -199,5 +199,11 @@ public static class Som
     public static void TocarPontos()
     {
         TocarEfeito(@"Assets\pontos.wav");
+    }
+
+    // Toca o som de Game Over.
+    public static void TocarGameOver()
+    {
+        TocarEfeito(@"Assets\gameover.wav");
     }
 }
