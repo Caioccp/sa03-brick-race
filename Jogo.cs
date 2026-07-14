@@ -233,24 +233,15 @@ public class Jogo
                     // Verifica se acabaram as vidas.
                     if (sistema.Vidas <= 0)
                     {
-                        // Para a música de fundo.
-                        Som.Parar();
-
-                        // Toca o som de Game Over.
-                        Som.TocarGameOver();
-
-                        // Espera o som tocar.
-                        Thread.Sleep(3000); // ajuste para a duração do seu áudio
-
                         // Salva o resultado da partida.
                         sistema.SalvarResultado();
-
-                        // Exibe a tela de Game Over.
-                        GameOver();
-
+                        // Mostra a tela "Você Perdeu"
+                        TelaPerdeu();
                         // Encerra o jogo.
                         rodando = false;
-                    }
+
+                        return;
+                        }
                     else
                     {
                         // Ainda possui vidas, então toca o som de colisão.
@@ -319,7 +310,7 @@ public class Jogo
 
         // Exibe o nível alcançado.
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine($"║ Nível alcançado: {sistema.Nivel:D3}                        ║");
+        Console.WriteLine($"║ Nível alcançado: {sistema.Nivel:D3}                       ║");
 
         // Exibe a quantidade de obstáculos desviados.
         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -327,7 +318,7 @@ public class Jogo
 
         // Exibe o recorde.
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                           ║");
+        Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                            ║");
 
         // Mensagem para voltar ao menu.
         Console.ForegroundColor = ConsoleColor.White;
