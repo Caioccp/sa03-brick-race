@@ -200,4 +200,10 @@ public static class Som
     {
         TocarEfeito(@"Assets\pontos.wav");
     }
+
+    // Toca o som de Game Over.
+    public static void TocarGameOver()
+    {
+        TocarEfeito(@"Assets\gameover.wav");
+    }
 }

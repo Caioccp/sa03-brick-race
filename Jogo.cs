@@ -226,25 +226,36 @@ public class Jogo
                 {
                     // Caso contrário, perde uma vida.
                     sistema.PerderVida();
-                }
 
-                // Reproduz o som da colisão.
-                Som.TocarColisao(sistema.DanosRecebidos);
+                    // Remove o obstáculo atingido.
+                    obstaculo.Obstaculos.RemoveAt(i);
 
-                // Remove o obstáculo atingido.
-                obstaculo.Obstaculos.RemoveAt(i);
+                    // Verifica se acabaram as vidas.
+                    if (sistema.Vidas <= 0)
+                    {
+                        // Para a música de fundo.
+                        Som.Parar();
 
-                // Verifica se acabaram as vidas.
-                if (sistema.Vidas <= 0)
-                {
-                    // Salva o resultado da partida.
-                    sistema.SalvarResultado();
+                        // Toca o som de Game Over.
+                        Som.TocarGameOver();
 
-                    // Exibe a tela de Game Over.
-                    GameOver();
+                        // Espera o som tocar.
+                        Thread.Sleep(3000); // ajuste para a duração do seu áudio
 
-                    // Encerra o jogo.
-                    rodando = false;
+                        // Salva o resultado da partida.
+                        sistema.SalvarResultado();
+
+                        // Exibe a tela de Game Over.
+                        GameOver();
+
+                        // Encerra o jogo.
+                        rodando = false;
+                    }
+                    else
+                    {
+                        // Ainda possui vidas, então toca o som de colisão.
+                        Som.TocarColisao(sistema.DanosRecebidos);
+                    }
                 }
             }
 
@@ -259,6 +270,33 @@ public class Jogo
             }
         }
     }
+        void TelaPerdeu()
+{
+    // Para a música de fundo
+    Som.Parar();
+
+    // Limpa a tela
+    Console.Clear();
+
+    Console.ForegroundColor = ConsoleColor.Red;
+
+    Console.WriteLine();
+    Console.WriteLine("=======================================");
+    Console.WriteLine("            VOCÊ PERDEU :(");
+    Console.WriteLine("=======================================");
+
+    Console.ResetColor();
+
+    // Toca o som de derrota
+    Som.TocarGameOver();
+
+    // Espera o som terminar
+    Thread.Sleep(3000);
+
+    // Vai para a tela de Game Over
+    GameOver();
+}
+
 
         // Método responsável por exibir a tela de fim de jogo.
     void GameOver()
@@ -281,15 +319,15 @@ public class Jogo
 
         // Exibe o nível alcançado.
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine($"║ Nível alcançado: {sistema.Nivel:D3}                     ║");
+        Console.WriteLine($"║ Nível alcançado: {sistema.Nivel:D3}                        ║");
 
         // Exibe a quantidade de obstáculos desviados.
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"║ Obstáculos desviados: {sistema.ObstaculosDesviados:D3}              ║");
+        Console.WriteLine($"║ Obstáculos desviados: {sistema.ObstaculosDesviados:D3}                  ║");
 
         // Exibe o recorde.
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                        ║");
+        Console.WriteLine($"║ Recorde: {SistemaJogo.Recorde:D6}                           ║");
 
         // Mensagem para voltar ao menu.
         Console.ForegroundColor = ConsoleColor.White;
