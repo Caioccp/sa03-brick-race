@@ -55,10 +55,17 @@ public class SistemaJogo
 
     public void SomarPontos()
     {
-        Pontos += 10;
+        if (PontosDobrados)
+        {
+            Pontos += 20;
+        }
+        else
+        {
+            Pontos += 10;
+        }
+
         ObstaculosDesviados++;
     }
-
     public void AtualizarNivel()
 {
     if (Pontos >= 1900)
