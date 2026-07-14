@@ -289,10 +289,14 @@ public class Jogo
         // Toca o som de derrota
         Som.TocarGameOver();
 
-        // Espera o som terminar
         Thread.Sleep(3000);
 
-        // Vai para a tela de Game Over
+        // Limpa qualquer tecla pressionada durante os 3 segundos
+        while (Console.KeyAvailable)
+        {
+            Console.ReadKey(true);
+        }
+
         GameOver();
     }
 
@@ -338,7 +342,31 @@ public class Jogo
         Console.ResetColor();
 
         // Aguarda o jogador pressionar uma tecla.
-        Console.ReadKey(true);
+        // Limpa todas as teclas que ficaram pressionadas
+        while (Console.KeyAvailable)
+        {
+            Console.ReadKey(true);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu...");
+
+        // Limpa as teclas que ficaram pressionadas durante o jogo
+        while (Console.KeyAvailable)
+        {
+            Console.ReadKey(true);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Pressione ENTER para voltar ao menu.");
+
+        ConsoleKey tecla;
+
+        do
+        {
+            tecla = Console.ReadKey(true).Key;
+        }
+        while (tecla != ConsoleKey.Enter);
     }
 
 
