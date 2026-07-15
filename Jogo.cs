@@ -36,8 +36,9 @@ public class Jogo
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine();
         Console.WriteLine("======================================");
-        Console.WriteLine("      PARABÉNS!");
-        Console.WriteLine("      Você farmou aura");
+        Console.WriteLine("              PARABÉNS!");
+        Console.WriteLine("          Você farmou aura");
+        Console.WriteLine("   Continue jogando normalmente...");
         Console.WriteLine("======================================");
         Console.ResetColor();
 
