@@ -66,9 +66,12 @@ public class Foguete
         // ===== ESCUDO =====
         if (escudoAtivo)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            // Faz o escudo piscar entre azul e ciano
+            if (DateTime.Now.Millisecond < 500)
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            else
+                Console.ForegroundColor = ConsoleColor.Blue;
 
-            // Desenha um pequeno campo de força acima do foguete
             Console.SetCursorPosition(coluna, linha - 1);
             Console.Write("◜─◝");
         }
