@@ -168,7 +168,6 @@ public class PowerUp
         }
 
 
-
         // Retorna a cor padrão do console.
         Console.ResetColor();
     }
