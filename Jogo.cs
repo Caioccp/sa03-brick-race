@@ -262,7 +262,7 @@ public class Jogo
                     // Toca um som (opcional).
                     Som.TocarEscudo();
                 }
-                else
+                else 
                 {
                     // Caso contrário, perde uma vida.
                     sistema.PerderVida();
