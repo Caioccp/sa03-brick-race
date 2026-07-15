@@ -40,6 +40,7 @@ public class Menu
             Console.WriteLine("║ 1 - Iniciar jogo                   ║");
             Console.WriteLine("║ 2 - Instruções                     ║");
             Console.WriteLine("║ 3 - Último resultado               ║");
+            Console.WriteLine("║ 4 - Créditos                       ║");
 
 
             // Opção sair em vermelho para destacar.
@@ -116,6 +117,12 @@ public class Menu
 
                     break;
 
+                // Mostra os créditos do jogo.
+                case 4:
+
+                    MostrarCreditos();
+
+                    break;
 
 
                 // Encerra o programa.
@@ -291,4 +298,62 @@ public class Menu
 
         Console.ReadKey(true);
     }
+    // Método responsável por exibir os créditos do jogo.
+void MostrarCreditos()
+{
+    Console.Clear();
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("============= CRÉDITOS =============\n");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("SPACE RUN");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Desenvolvedores:");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("• Luiza Triches");
+    Console.WriteLine("• Arthur Werlang");
+    Console.WriteLine("• Caua Schuh");
+    Console.WriteLine("• Caio Carniel");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Curso: Técnico em Desenvolvimento de Sistemas");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("Técnico em Desenvolvimento de Sistemas - 2026");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Professor:");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("Alisson Zimmer");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("Tecnologias Utilizadas:");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("IA Generativa (ChatGPT, Gemini)");
+    Console.WriteLine("Programação em C#");
+    Console.WriteLine("NAudio (Para utilização de efeitos sonoros)");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Magenta;
+    Console.WriteLine("Projeto desenvolvido no SENAI");
+    Console.WriteLine("Disciplina de Programação em C#");
+    Console.WriteLine();
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("Obrigado por jogar!");
+    Console.WriteLine();
+    Console.WriteLine("Pressione ENTER para voltar ao menu.");
+
+    Console.ResetColor();
+
+    while (Console.ReadKey(true).Key != ConsoleKey.Enter)
+    {
+    }
+}
 }
