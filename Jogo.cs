@@ -35,11 +35,12 @@ public class Jogo
 
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine();
-        Console.WriteLine("======================================");
-        Console.WriteLine("              PARABÉNS!");
-        Console.WriteLine("          Você farmou aura");
-        Console.WriteLine("   Continue jogando normalmente...");
-        Console.WriteLine("======================================");
+        Console.WriteLine("============================================================================");
+        Console.WriteLine("                                     PARABÉNS!");
+        Console.WriteLine("                             Você tem 670 pontos!");
+        Console.WriteLine("                                Você farmou aura");
+        Console.WriteLine("                      Continue jogando normalmente...");
+        Console.WriteLine("============================================================================");
         Console.ResetColor();
 
         Thread.Sleep(3000);
@@ -470,7 +471,7 @@ public class Jogo
         if (sistema.PontosDobrados)
         {
             Console.SetCursorPosition(42, 12);
-            Console.WriteLine($"$x2 ({sistema.TempoPontosDobrados / 10}s)");
+            Console.WriteLine($"$ x2 ({sistema.TempoPontosDobrados / 10}s)");
         }
 
         // Nenhum buff ativo.
