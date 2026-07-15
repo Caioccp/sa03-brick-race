@@ -30,7 +30,7 @@ public class SistemaJogo
     // Tempo restante do buff de pontos dobrados.
     public int TempoPontosDobrados { get; set; }
 
-    // Matriz utilizada para representar a pista.
+    // Utilizando matrizes
     public char[,] Pista = new char[20, 35];
 
     // Informa se já existe uma partida salva.

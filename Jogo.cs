@@ -25,7 +25,8 @@ public class Jogo
     PowerUp powerUp = new PowerUp(30);
 
     bool frase670 = false;
-    void VerificarFrase670()
+
+void VerificarFrase670()
 {
     if (sistema.Pontos >= 670 && !frase670)
     {
@@ -47,28 +48,56 @@ public class Jogo
     }
 }
 
+// utilizamos a recursividade aqui
+void ContagemRegressiva(int numero)
+{
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Yellow;
 
+    if (numero == 0)
+    {
+        Console.WriteLine();
+        Console.WriteLine("=====================================================================================");
+        Console.WriteLine("                                    VAMOS LÁ!          ");
+        Console.WriteLine("=====================================================================================");
 
+        Console.ResetColor();
+        Thread.Sleep(1000);
+        return;
+    }
 
+    Console.WriteLine();
+    Console.WriteLine("=====================================================================================");
+    Console.WriteLine("                                  O JOGO COMEÇA EM");
+    Console.WriteLine($"                                          {numero}");
+    Console.WriteLine("                                      BOA SORTE!");
+    Console.WriteLine("=====================================================================================");
+
+    Console.ResetColor();
+
+    Thread.Sleep(1000);
+
+    // Chamada recursiva
+    ContagemRegressiva(numero - 1);
+}
     // Método responsável por iniciar a partida.
     public void Iniciar()
     {
+        // Contagem regressiva antes do jogo.
+        ContagemRegressiva(3);
+
         // Inicia a música de fundo.
         Som.Iniciar();
 
         // Loop principal do jogo.
         while (rodando)
         {
-            // Desenha toda a tela.
             DesenharTela();
 
-            // Lê as teclas pressionadas.
             LerTeclado();
 
-            // Atualiza todos os elementos do jogo.
             Atualizar();
 
-            // Controla a velocidade da partida.
             Thread.Sleep(sistema.Velocidade);
         }
 
