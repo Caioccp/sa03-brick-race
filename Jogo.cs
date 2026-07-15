@@ -27,9 +27,9 @@ public class Jogo
     bool frase670 = false;
     void VerificarFrase670()
 {
-    if (sistema.Pontos >= 670 && !frase670Mostrada)
+    if (sistema.Pontos >= 670 && !frase670)
     {
-        frase670Mostrada = true;
+        frase670 = true;
 
         Console.Clear();
 
