@@ -313,12 +313,24 @@ void MostrarCreditos()
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("Desenvolvedores:");
 
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("• Luiza Triches");
-    Console.WriteLine("• Arthur Werlang");
-    Console.WriteLine("• Caua Schuh");
-    Console.WriteLine("• Caio Carniel");
-    Console.WriteLine();
+        //estamos utilizando vetores, ó
+        string[] equipe =
+        {
+            "Luiza Triches",
+            "Arthur Werlang",
+            "Cauã Schuh",
+            "Caio Carniel"
+        };
+
+        Console.ForegroundColor = ConsoleColor.White;
+
+        // Percorre o vetor e exibe cada integrante
+        foreach (string integrante in equipe)
+        {
+            Console.WriteLine($"• {integrante}");
+        }
+
+        Console.WriteLine();
 
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("Curso: Técnico em Desenvolvimento de Sistemas");
