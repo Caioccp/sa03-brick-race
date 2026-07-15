@@ -318,7 +318,7 @@ void MostrarCreditos()
         {
             "Luiza Triches",
             "Arthur Werlang",
-            "Caua Schuh",
+            "Cauã Schuh",
             "Caio Carniel"
         };
 
