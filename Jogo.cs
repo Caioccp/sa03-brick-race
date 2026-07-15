@@ -171,7 +171,7 @@ public class Jogo
         Console.ResetColor();
 
         // Desenha todos os elementos do jogo.
-        foguete.Desenhar();
+        foguete.Desenhar(sistema.EscudoAtivo);
         obstaculo.Desenhar();
         powerUp.Desenhar();
     }
