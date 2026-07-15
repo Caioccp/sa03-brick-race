@@ -253,7 +253,14 @@ public class Jogo
                 // ele protege o jogador.
                 if (sistema.EscudoAtivo)
                 {
+                    // Consome o escudo.
                     sistema.EscudoAtivo = false;
+
+                    // Remove o obstáculo que bateu.
+                     obstaculo.Obstaculos.RemoveAt(i);
+
+                    // Toca um som (opcional).
+                    Som.TocarEscudo();
                 }
                 else
                 {
