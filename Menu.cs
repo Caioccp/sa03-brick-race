@@ -354,7 +354,7 @@ void MostrarCreditos()
 
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("Projeto desenvolvido no SENAI");
-    Console.WriteLine("Disciplina de Programação em C#");
+    Console.WriteLine("Disciplina de Lógica de Programação");
     Console.WriteLine();
 
     Console.ForegroundColor = ConsoleColor.Green;
