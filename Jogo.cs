@@ -48,7 +48,7 @@ void VerificarFrase670()
     }
 }
 
-// utilizamos a recursividade aqui
+// utilizamos a recursividade aqui, ó
 void ContagemRegressiva(int numero)
 {
     Console.Clear();
